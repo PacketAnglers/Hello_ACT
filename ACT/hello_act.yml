@@ -88,23 +88,23 @@ links:
   # LEAF2
   - connection:
     - SPINE1:Ethernet2
-    - LEAF1:Ethernet49
+    - LEAF2:Ethernet49
   - connection:
     - SPINE2:Ethernet2
-    - LEAF1:Ethernet50
+    - LEAF2:Ethernet50
 
   # LEAF3
   - connection:
     - SPINE1:Ethernet3
-    - LEAF1:Ethernet49
+    - LEAF3:Ethernet49
   - connection:
     - SPINE2:Ethernet3
-    - LEAF1:Ethernet50
+    - LEAF3:Ethernet50
 
   # LEAF4
   - connection:
     - SPINE1:Ethernet4
-    - LEAF1:Ethernet49
+    - LEAF4:Ethernet49
   - connection:
     - SPINE2:Ethernet4
-    - LEAF1:Ethernet50
+    - LEAF4:Ethernet50
