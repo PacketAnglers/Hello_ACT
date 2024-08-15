@@ -1,0 +1,110 @@
+veos:
+  username: cvpadmin
+  password: cvp123!
+  version: 4.31.4M
+
+cvp:
+  username: root
+  password: cvproot
+  version: 2024.1.2
+  instance: singlenode
+
+tools-server:
+  username: cvpadmin
+  password: cvp123!
+  version: ubuntu-2204-lts
+
+nodes:
+
+  - CVP:
+      ip_addr: 192.168.0.5
+      node_type: cvp
+      auto_configuration: true
+  - TOOLS:
+      ip_addr: 192.168.0.6
+      node_type: tools-server
+  - SPINE1:
+      ip_addr: 192.168.0.11
+      node_type: veos
+      device_model: 7050SX3-96YC8
+  - SPINE2:
+      ip_addr: 192.168.0.12
+      node_type: veos
+      device_model: 7050SX3-96YC8
+  - LEAF1:
+      ip_addr: 192.168.0.13
+      node_type: veos
+      device_model: 720XP-48ZC2
+  - LEAF2:
+      ip_addr: 192.168.0.14
+      node_type: veos
+      device_model: 720XP-48ZC2
+  - LEAF3:
+      ip_addr: 192.168.0.17
+      node_type: veos
+      device_model: 720XP-48ZC2
+  - LEAF4:
+      ip_addr: 192.168.0.18
+      node_type: veos
+      device_model: 720XP-48ZC2
+
+links:
+
+##############################
+# MLAGs
+##############################
+
+  - connection:
+    - SPINE1:Ethernet103/1
+    - SPINE2:Ethernet103/1
+  - connection:
+    - SPINE1:Ethernet104/1
+    - SPINE2:Ethernet104/1
+  - connection:
+    - LEAF1:Ethernet51
+    - LEAF2:Ethernet51
+  - connection:
+    - LEAF1:Ethernet52
+    - LEAF2:Ethernet52
+  - connection:
+    - LEAF3:Ethernet51
+    - LEAF4:Ethernet51
+  - connection:
+    - LEAF3:Ethernet52
+    - LEAF4:Ethernet52
+
+##############################
+# Spines to Leafs
+##############################
+
+  # LEAF1
+  - connection:
+    - SPINE1:Ethernet1
+    - LEAF1:Ethernet49
+  - connection:
+    - SPINE2:Ethernet1
+    - LEAF1:Ethernet50
+
+  # LEAF2
+  - connection:
+    - SPINE1:Ethernet2
+    - LEAF1:Ethernet49
+  - connection:
+    - SPINE2:Ethernet2
+    - LEAF1:Ethernet50
+
+  # LEAF3
+  - connection:
+    - SPINE1:Ethernet3
+    - LEAF1:Ethernet49
+  - connection:
+    - SPINE2:Ethernet3
+    - LEAF1:Ethernet50
+
+  # LEAF4
+  - connection:
+    - SPINE1:Ethernet4
+    - LEAF1:Ethernet49
+  - connection:
+    - SPINE2:Ethernet4
+    - LEAF1:Ethernet50
