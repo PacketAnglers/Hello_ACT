@@ -17,17 +17,15 @@ DC:
             SPINE2:
               ansible_host: 192.168.0.12
         DC_LEAFS:
-          children:
-            ISD:
-              hosts:
-                LEAF1:
-                  ansible_host: 192.168.0.13
-                LEAF2:
-                  ansible_host: 192.168.0.14
-                LEAF3:
-                  ansible_host: 192.168.0.17
-                LEAF4:
-                  ansible_host: 192.168.0.18
+          hosts:
+            LEAF1:
+              ansible_host: 192.168.0.13
+            LEAF2:
+              ansible_host: 192.168.0.14
+            LEAF3:
+              ansible_host: 192.168.0.17
+            LEAF4:
+              ansible_host: 192.168.0.18
     DC_FABRIC_SERVICES:
       children:
         DC_SPINES:
