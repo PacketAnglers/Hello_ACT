@@ -6,7 +6,7 @@ veos:
 cvp:
   username: root
   password: cvproot
-  version: 2024.1.2
+  version: 2024.2.0
   instance: singlenode
 
 tools-server:
