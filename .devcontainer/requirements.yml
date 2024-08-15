@@ -1,0 +1,26 @@
+---
+collections:
+
+  - name: ansible.netcommon
+    source: https://galaxy.ansible.com
+    version: 7.0.0
+
+  - name: ansible.posix
+    source: https://galaxy.ansible.com
+    version: 1.5.4
+
+  - name: arista.eos
+    source: https://galaxy.ansible.com
+    version: 10.0.0
+
+  - name: community.general
+    source: https://galaxy.ansible.com
+    version: 9.1.0
+
+  - name: arista.avd
+    source: https://galaxy.ansible.com
+    version: 4.8.0
+
+  - name: arista.cvp
+    source: https://galaxy.ansible.com
+    version: 3.10.1

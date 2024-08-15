@@ -1,0 +1,35 @@
+{
+	"name": "hello_act",
+	"workspaceFolder": "/workspace",
+	"dockerComposeFile": "docker-compose.yml",
+    "postStartCommand": "chmod 755 /workspace",
+	"service": "hello_act",
+    "features": {
+        "ghcr.io/devcontainers/features/github-cli:1": {}
+	},
+	"customizations": {
+        "vscode": {
+            "extensions": [
+                "aristapublisher.eos",
+                "eamodio.gitlens",
+                "github.vscode-pull-request-github",
+                "lextudio.restructuredtext",
+                "ms-kubernetes-tools.vscode-kubernetes-tools",
+                "ms-python.python",
+                "redhat.vscode-yaml",
+                "PKief.material-icon-theme",
+                "samuelcolvin.jinjahtml",
+                "johnpapa.vscode-peacock",
+                "yzhang.markdown-all-in-one",
+                "ms-azuretools.vscode-docker",
+                "davidanson.vscode-markdownlint",
+                "yzhang.markdown-all-in-one",
+                "oderwat.indent-rainbow",
+                "AykutSarac.jsoncrack-vscode",
+                "hilleer.yaml-plus-json"
+	        ]
+        }
+    },
+    "forwardPorts": [8000, 8000],
+	"shutdownAction": "stopCompose"
+}

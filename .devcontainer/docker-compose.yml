@@ -1,0 +1,15 @@
+version: "3.9"
+
+services:
+  hello_act:
+    build: .
+    image: "hello_act:latest"
+    container_name: hello_act
+    restart: always
+    command: ['tail', '-f', '/dev/null']
+
+    environment:
+      - TZ=America/New_York
+      - DEBIAN_FRONTEND=noninteractive
+    volumes:
+      - ../:/workspace
