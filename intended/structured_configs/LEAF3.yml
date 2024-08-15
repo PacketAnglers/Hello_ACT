@@ -1,0 +1,129 @@
+hostname: LEAF3
+is_deployed: true
+service_routing_protocols_model: multi-agent
+vlan_internal_order:
+  allocation: ascending
+  range:
+    beginning: 1006
+    ending: 1199
+spanning_tree:
+  mode: rstp
+  rstp_priority: 8192
+  no_spanning_tree_vlan: '4094'
+local_users:
+- name: cvpadmin
+  privilege: 15
+  role: network-admin
+  sha512_password: $6$6VszRSKP3bToV8Ot$M4IfwKnxUmjoFznimit9BKrTdWx6kfCUA9rUhaB6HIWXYEeZ9.lpH6PEK.urnQ03nrAdesS1KNbFilIelvyxz.
+- name: service
+  privilege: 15
+  role: network-admin
+  shell: /bin/bash
+  sha512_password: $6$4Ey4qpC8elLHIA2a$GRrcdzVU1anXhn5FrAAEtsPg0zdnEHCza4tHVqTCGFV4XFme7Tl8SRGy.Xe0NA7A8XktXr1ZtNzAoBwzm18Nb0
+vrfs:
+- name: default
+  ip_routing: false
+management_interfaces:
+- name: Management1
+  description: oob_management
+  shutdown: false
+  vrf: default
+  ip_address: 192.168.0.17/24
+  gateway: null
+  type: oob
+management_api_http:
+  enable_vrfs:
+  - name: default
+  enable_https: true
+vlans:
+- id: 4094
+  tenant: system
+  name: MLAG_PEER
+  trunk_groups:
+  - MLAG
+- id: 10
+  name: Ten
+  tenant: MY_FABRIC
+- id: 20
+  name: Twenty
+  tenant: MY_FABRIC
+- id: 30
+  name: Thirty
+  tenant: MY_FABRIC
+- id: 40
+  name: Forty
+  tenant: MY_FABRIC
+vlan_interfaces:
+- name: Vlan4094
+  description: MLAG_PEER
+  shutdown: false
+  no_autostate: true
+  mtu: 1500
+  ip_address: 10.1.253.0/31
+port_channel_interfaces:
+- name: Port-Channel51
+  description: MLAG_PEER_LEAF4_Po51
+  type: switched
+  shutdown: false
+  mode: trunk
+  trunk_groups:
+  - MLAG
+- name: Port-Channel49
+  description: SPINES_Po3
+  type: switched
+  shutdown: false
+  mode: trunk
+  vlans: 10,20,30,40
+  mlag: 49
+ethernet_interfaces:
+- name: Ethernet51
+  peer: LEAF4
+  peer_interface: Ethernet51
+  peer_type: mlag_peer
+  description: MLAG_PEER_LEAF4_Ethernet51
+  type: port-channel-member
+  shutdown: false
+  channel_group:
+    id: 51
+    mode: active
+- name: Ethernet52
+  peer: LEAF4
+  peer_interface: Ethernet52
+  peer_type: mlag_peer
+  description: MLAG_PEER_LEAF4_Ethernet52
+  type: port-channel-member
+  shutdown: false
+  channel_group:
+    id: 51
+    mode: active
+- name: Ethernet49
+  peer: SPINE1
+  peer_interface: Ethernet3
+  peer_type: l3spine
+  description: SPINE1_Ethernet3
+  shutdown: false
+  type: port-channel-member
+  channel_group:
+    id: 49
+    mode: active
+- name: Ethernet50
+  peer: SPINE2
+  peer_interface: Ethernet3
+  peer_type: l3spine
+  description: SPINE2_Ethernet3
+  shutdown: false
+  type: port-channel-member
+  channel_group:
+    id: 49
+    mode: active
+mlag_configuration:
+  domain_id: POD2
+  local_interface: Vlan4094
+  peer_address: 10.1.253.1
+  peer_link: Port-Channel51
+  reload_delay_mlag: '300'
+  reload_delay_non_mlag: '330'
+ip_igmp_snooping:
+  globally_enabled: true
+metadata:
+  platform: vEOS

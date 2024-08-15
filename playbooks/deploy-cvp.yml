@@ -1,0 +1,17 @@
+
+---
+- name: Deploying Changes via CVP
+  hosts: cv_server
+  connection: local
+  gather_facts: false
+
+  tasks:
+    - name: Run CVP provisioning
+      ansible.builtin.import_role:
+          name: arista.avd.eos_config_deploy_cvp
+      vars:
+        container_root: "DC_FABRIC"
+        configlets_prefix: "AHM"
+        state: present
+        execute_tasks: false
+        device_filter: ''

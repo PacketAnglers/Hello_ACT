@@ -1,0 +1,80 @@
+---
+fabric_name: DC_FABRIC
+
+# Set Design Type to L2ls
+design:
+  type: l2ls
+
+# Spine Switches
+l3spine:
+  defaults:
+    platform: vEOS
+    spanning_tree_mode: rstp
+    spanning_tree_priority: 4096
+    loopback_ipv4_pool: 10.1.252.0/24
+    mlag_peer_ipv4_pool: 10.1.253.0/31
+    mlag_peer_l3_ipv4_pool: 10.1.254.0/31
+    virtual_router_mac_address: 00:1c:73:00:dc:01
+    mlag_interfaces: [ Ethernet103/1, Ethernet104/1 ]
+  node_groups:
+    - group: SPINES
+      nodes:
+        - name: SPINE1
+          id: 1
+          mgmt_ip: 192.168.0.11/24
+
+        - name: SPINE2
+          id: 2
+          mgmt_ip: 192.168.0.12/24
+
+###########################
+# Leaf Switches
+###########################
+
+leaf:
+  defaults:
+    platform: vEOS
+    mlag_peer_ipv4_pool: 10.1.253.0/31
+    spanning_tree_mode: rstp
+    spanning_tree_priority: 8192
+    uplink_switches: [ SPINE1, SPINE2 ]
+    uplink_interfaces: [ Ethernet49, Ethernet50 ]
+    mlag_interfaces: [ Ethernet51, Ethernet52 ]
+
+###########################
+# POD1 - LEAF1/2
+###########################
+
+  node_groups:
+    - group: POD1
+      nodes:
+        - name: LEAF1
+          id: 1
+          mgmt_ip: 192.168.0.13/24
+          uplink_switch_interfaces: [ Ethernet1, Ethernet1 ]
+        - name: LEAF2
+          id: 2
+          mgmt_ip: 192.168.0.14/24
+          uplink_switch_interfaces: [ Ethernet2, Ethernet2 ]
+
+###########################
+# HRAOISD2-1
+###########################
+
+    - group: POD2
+      nodes:
+        - name: LEAF3
+          id: 5
+          mgmt_ip: 192.168.0.17/24
+          uplink_switch_interfaces: [ Ethernet3, Ethernet3 ]
+        - name: LEAF4
+          id: 6
+          mgmt_ip: 192.168.0.18/24
+          uplink_switch_interfaces: [ Ethernet4, Ethernet4 ]
+
+##################################################################
+# Underlay Routing Protocol
+##################################################################
+
+underlay_routing_protocol: OSPF
+underlay_ospf_process_id: 1

@@ -1,0 +1,38 @@
+---
+DC:
+  children:
+    CVP:
+      hosts:
+        cv_ztp:
+          ansible_host: 192.168.0.5
+        cv_server:
+          ansible_httpapi_host: 192.168.0.5
+          ansible_host: 192.168.0.5
+    DC_FABRIC:
+      children:
+        DC_SPINES:
+          hosts:
+            SPINE1:
+              ansible_host: 192.168.0.11
+            SPINE2:
+              ansible_host: 192.168.0.12
+        DC_LEAFS:
+          children:
+            ISD:
+              hosts:
+                LEAF1:
+                  ansible_host: 192.168.0.13
+                LEAF2:
+                  ansible_host: 192.168.0.14
+                LEAF3:
+                  ansible_host: 192.168.0.17
+                LEAF4:
+                  ansible_host: 192.168.0.18
+    DC_FABRIC_SERVICES:
+      children:
+        DC_SPINES:
+        DC_LEAFS:
+    DC_FABRIC_PORTS:
+      children:
+        DC_SPINES:
+        DC_LEAFS:

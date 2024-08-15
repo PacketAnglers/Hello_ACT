@@ -1,0 +1,9 @@
+---
+- name: Deploy Switch configuration
+  hosts: DC_FABRIC
+
+  tasks:
+
+    - name: Deploy Configuration to Device
+      import_role:
+         name: arista.avd.eos_config_deploy_eapi

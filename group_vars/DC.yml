@@ -1,0 +1,81 @@
+# Credentials for CVP and EOS Switches
+ansible_user: cvpadmin
+ansible_password: cvp123!
+ansible_network_os: arista.eos.eos
+# Configure privilege escalation
+ansible_become: true
+ansible_become_method: enable
+# HTTPAPI configuration
+ansible_connection: httpapi
+ansible_httpapi_port: 443
+ansible_httpapi_use_ssl: true
+ansible_httpapi_validate_certs: false
+ansible_python_interpreter: $(which python3)
+avd_data_conversion_mode: error
+avd_data_validation_mode: error
+
+# Local Users
+local_users:
+  - name: cvpadmin
+    privilege: 15
+    role: network-admin
+    sha512_password: "$6$6VszRSKP3bToV8Ot$M4IfwKnxUmjoFznimit9BKrTdWx6kfCUA9rUhaB6HIWXYEeZ9.lpH6PEK.urnQ03nrAdesS1KNbFilIelvyxz."
+  - name: service # used for auto_config_cvp
+    privilege: 15
+    role: network-admin
+    shell: "/bin/bash"
+    sha512_password: "$6$4Ey4qpC8elLHIA2a$GRrcdzVU1anXhn5FrAAEtsPg0zdnEHCza4tHVqTCGFV4XFme7Tl8SRGy.Xe0NA7A8XktXr1ZtNzAoBwzm18Nb0"
+
+# AAA
+aaa_authorization:
+  exec:
+    default: local
+
+# OOB Management network default gateway.
+# Comment out the mgmt_gateway for ACT.  Default route will be 10.18.x.x for access
+# out of ACT environment.
+# mgmt_gateway: 192.168.0.1
+mgmt_interface: Management1
+mgmt_interface_vrf: default
+
+ip_name_servers:
+  - ip_address: 8.8.8.8
+    vrf: default
+
+# NTP Servers IP or DNS name, first NTP server will be preferred, and sourced from Management VRF
+ntp:
+  servers:
+    - name: time.google.com
+      iburst: true
+      local_interface: Management1
+
+# TerminAttr
+daemon_terminattr:
+  # Address of the gRPC server on CloudVision
+  # TCP 9910 is used on on-prem
+  # TCP 443 is used on CV as a Service
+  cvaddrs: # For single cluster
+    - 192.168.0.5:9910
+  # Authentication scheme used to connect to CloudVision
+  cvauth:
+    method: token
+    token_file: "/tmp/token"
+  # Exclude paths from Sysdb on the ingest side
+  ingestexclude: /Sysdb/cell/1/agent,/Sysdb/cell/2/agent
+  # Exclude paths from the shared memory table
+  smashexcludes: ale,flexCounter,hardware,kni,pulse,strata
+
+# Use the same IP subnet for each MLAG pair
+fabric_ip_addressing:
+  mlag:
+    algorithm: same_subnet
+
+# Point to Point Links MTU Override for Lab
+p2p_uplinks_mtu: 1500
+
+# CVP node variables
+cv_collection: v3
+execute_tasks: false
+
+switchport_default:
+  mode: "routed"

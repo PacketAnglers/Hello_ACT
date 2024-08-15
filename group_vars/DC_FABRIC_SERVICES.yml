@@ -1,0 +1,64 @@
+---
+
+svi_profiles:
+  - profile: SP_ADD_OSPF
+    structured_config:
+      ospf_area: 0.0.0.0
+
+tenants:
+  - name: MY_FABRIC
+    vrfs:
+      - name: default
+        ospf:
+          enabled: true
+          process_id: 1
+        structured_config:
+          router_ospf:
+            process_ids:
+              - id: 1
+                redistribute: null
+        svis:
+          - id: 10
+            name: 'Ten'
+            enabled: True
+            profile: SP_ADD_OSPF
+            ip_virtual_router_addresses:
+              - 10.10.10.1
+            nodes:
+              - node: SPINE1
+                ip_address: 10.10.10.2/24
+              - node: SPINE2
+                ip_address: 10.10.10.3/24
+          - id: 20
+            name: 'Twenty'
+            enabled: True
+            profile: SP_ADD_OSPF
+            ip_virtual_router_addresses:
+              - 10.20.20.1
+            nodes:
+              - node: SPINE1
+                ip_address: 10.20.20.2/24
+              - node: SPINE2
+                ip_address: 10.20.20.3/24
+          - id: 30
+            name: 'Thirty'
+            enabled: True
+            profile: SP_ADD_OSPF
+            ip_virtual_router_addresses:
+              - 10.30.30.1
+            nodes:
+              - node: SPINE1
+                ip_address: 10.30.30.2/24
+              - node: SPINE2
+                ip_address: 10.30.30.3/24
+          - id: 40
+            name: 'Forty'
+            enabled: True
+            profile: SP_ADD_OSPF
+            ip_virtual_router_addresses:
+              - 10.40.40.1
+            nodes:
+              - node: SPINE1
+                ip_address: 10.40.40.2/24
+              - node: SPINE2
+                ip_address: 10.40.40.3/24

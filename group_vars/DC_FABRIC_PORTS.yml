@@ -1,0 +1,14 @@
+---
+
+port_profiles:
+
+  - profile: PP-TRUNK
+    mode: "trunk"
+
+switches:
+
+
+connected_endpoints_keys:
+- description: Switch.
+  key: switches
+  type: switch
