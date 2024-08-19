@@ -11,14 +11,16 @@ The repository is aimed to give you a jumpstart in deploying your first ACT Lab.
 
 ## Setting up the Tools Server node
 
-There is a tools-sertver included with the lab. It allows you to run VSCode inside of a container within the lab. From the tools-server node you can:
+There is a tools-server node included with the lab. It allows you to run VSCode as a container within the lab. From the tools-server node you can:
 
 - Modify the AVD data model
 - Generate configs and docs
 - Push configs to switches via eAPI
 - Push configs via CVP
 
-The first time you start a lab you will need install AVD and set up ZSH. Follow instructions [here](ACT/tools-server.md).
+### Running tools-server for the first time
+
+The first time you start a lab you will need install AVD and set up ZSH (z-shell). Follow instructions [here](ACT/tools-server.md).
 
 After install AVD and ZSH, you can start the shell by typing:
 
