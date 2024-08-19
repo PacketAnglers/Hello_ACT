@@ -28,7 +28,7 @@ After install AVD and ZSH, you can start the shell by typing:
 zsh
 ```
 
-from the terminal. You should land at a prompt like below:
+From the terminal, you should land at a (zsh) prompt like below:
 
 ``` text
 ➜  /workspace git:(main) ✗
