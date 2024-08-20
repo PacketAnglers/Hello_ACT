@@ -34,6 +34,8 @@ From the terminal, you should land at a (zsh) prompt like below:
 ➜  /workspace git:(main) ✗
 ```
 
+## AVD - Build & Deploy
+
 From here you can build and deploy configs with the following make commands:
 
 ``` bash
