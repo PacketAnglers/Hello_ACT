@@ -13,5 +13,5 @@
         container_root: "DC_FABRIC"
         configlets_prefix: "AVD"
         state: present
-        execute_tasks: false
+        execute_tasks: true
         device_filter: ''
