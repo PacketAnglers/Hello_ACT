@@ -2,7 +2,7 @@
 
 The tools-server node comes with basic tools installed. We will update the node to support:
 
-- AVD 4.8
+- AVD 4.10.1
 - ZSH
 
 In tool-server VSCode, click File > Open Folder and open the cvpadmin folder. Next, make a new directory and clone the repo using the following commands.
@@ -15,32 +15,14 @@ git clone https://github.com/PacketAnglers/Hello_ACT.git
 
 Click File > Open Folder and open cvpadmin/git-projects/Hello_ACT
 
-install the correct versions of the requirements using the following commands
+Install AVD and requirements
 
 ``` bash
-pip install -r .devcontainer/requirements.txt
-ansible-galaxy collection install -r .devcontainer/requirements.yml --force
+pip install "pyavd[ansible]==4.10.1"
+ansible-galaxy collection install arista.avd:==4.10.1
 ```
 
-Check to make sure the following is installed under the root user using the following command
-
-``` bash
-ansible-galaxy collection list
-```
-
-``` text
-/root/.ansible/collections/ansible_collections
-Collection                               Version
----------------------------------------- -------
-ansible.netcommon                        7.0.0
-ansible.posix                            1.5.4
-arista.avd                               4.8.0
-arista.cvp                               3.10.1
-arista.eos                               10.0.0
-community.general                        9.1.0
-```
-
-Finally, install zsh
+Install zsh
 
 ``` bash
 sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/v1.1.5/zsh-in-docker.sh)" -- \

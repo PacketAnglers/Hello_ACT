@@ -15,13 +15,8 @@ RUN apt-get update && apt-get install -y \
     sudo \
     wget
 
-COPY requirements.txt requirements.txt
-
-COPY requirements.yml requirements.yml
-
-RUN pip3 install -r requirements.txt
-
-RUN ansible-galaxy collection install -r requirements.yml --force
+RUN pip install "pyavd[ansible]==4.10.1"
+RUN ansible-galaxy collection install arista.avd:==4.10.1
 
 RUN sh -c "$(wget -O- https://github.com/deluan/zsh-in-docker/releases/download/v1.1.5/zsh-in-docker.sh)" -- \
     -t robbyrussell \
