@@ -30,6 +30,10 @@
 
 | POD | Type | Node | Management IP | Inband Interface |
 | --- | ---- | ---- | ------------- | ---------------- |
+| DC_FABRIC | leaf | LEAF1 | 10.255.255.4/24 | Vlan255 |
+| DC_FABRIC | leaf | LEAF2 | 10.255.255.5/24 | Vlan255 |
+| DC_FABRIC | leaf | LEAF3 | 10.255.255.6/24 | Vlan255 |
+| DC_FABRIC | leaf | LEAF4 | 10.255.255.7/24 | Vlan255 |
 
 ## Fabric Topology
 

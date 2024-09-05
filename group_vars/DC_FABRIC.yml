@@ -22,9 +22,17 @@ l3spine:
         - name: SPINE1
           id: 1
           mgmt_ip: 192.168.0.11/24
+          structured_config:
+            loopback_interfaces:
+              - name: Loopback88
+                ip_address: 8.8.8.8/32
         - name: SPINE2
           id: 2
           mgmt_ip: 192.168.0.12/24
+          structured_config:
+            loopback_interfaces:
+              - name: Loopback88
+                ip_address: 8.8.8.8/32
 
 ###########################
 # Leaf Switches
@@ -39,6 +47,8 @@ leaf:
     uplink_switches: [ SPINE1, SPINE2 ]
     uplink_interfaces: [ Ethernet49, Ethernet50 ]
     mlag_interfaces: [ Ethernet51, Ethernet52 ]
+    inband_mgmt_vlan: 255
+    inband_mgmt_subnet: 10.255.255.0/24
 
 ###########################
 # POD1 - LEAF1/2
@@ -57,17 +67,17 @@ leaf:
           uplink_switch_interfaces: [ Ethernet2, Ethernet2 ]
 
 ###########################
-# HRAOISD2-1
+# POD1 - LEAF3/4
 ###########################
 
     - group: POD2
       nodes:
         - name: LEAF3
-          id: 5
+          id: 3
           mgmt_ip: 192.168.0.17/24
           uplink_switch_interfaces: [ Ethernet3, Ethernet3 ]
         - name: LEAF4
-          id: 6
+          id: 4
           mgmt_ip: 192.168.0.18/24
           uplink_switch_interfaces: [ Ethernet4, Ethernet4 ]
 

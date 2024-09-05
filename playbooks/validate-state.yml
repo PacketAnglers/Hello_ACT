@@ -1,0 +1,27 @@
+---
+- name: validate states on EOS devices using ANTA
+  hosts: DC_FABRIC
+  gather_facts: false
+  tasks:
+    - name: validate states on EOS devices
+      ansible.builtin.import_role:
+        name: arista.avd.eos_validate_state
+      vars:
+
+        # To enable ANTA
+        use_anta: true
+
+        # # To save catalogs
+        save_catalog: true
+
+        # Print only FAILED tests
+        # only_failed_tests: true
+
+        # Skip for vEOS/cEOS Labs
+        skip_tests:
+          - category: AvdTestNTP
+            tests:
+              - VerifyNTP
+          - category: AvdTestInbandReachability
+            tests:
+              - VerifyReachability

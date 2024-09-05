@@ -1,0 +1,3 @@
+anta.tests.interfaces:
+  - VerifyLoopbackCount:
+      number: 2

@@ -10,6 +10,10 @@ build: ## Build Configs with AVD
 deploy: ## Deploy configs via eAPI
 	ansible-playbook playbooks/deploy-eapi.yml -i remote-inventory.yml
 
+.PHONY: validate
+validate: ## Validate Current State with ANTA
+	ansible-playbook playbooks/validate-state.yml -i remote-inventory.yml
+
 .PHONY: deploy-cvp
 deploy-cvp: ## Deploy configs via CVP
 	ansible-playbook playbooks/deploy-cvp.yml

@@ -1,0 +1,228 @@
+# Validate State Report
+
+**Table of Contents:**
+
+- [Validate State Report](validate-state-report)
+  - [Test Results Summary](#test-results-summary)
+  - [Failed Test Results Summary](#failed-test-results-summary)
+  - [All Test Results](#all-test-results)
+
+## Test Results Summary
+
+### Summary Totals
+
+| Total Tests | Total Tests Passed | Total Tests Failed | Total Tests Skipped |
+| ----------- | ------------------ | ------------------ | ------------------- |
+| 178 | 154 | 0 | 24 |
+
+### Summary Totals Device Under Test
+
+| Device Under Test | Total Tests | Tests Passed | Tests Failed | Tests Skipped | Categories Failed | Categories Skipped |
+| ------------------| ----------- | ------------ | ------------ | ------------- | ----------------- | ------------------ |
+| LEAF1 | 26 | 22 | 0 | 4 | - | Hardware |
+| LEAF2 | 26 | 22 | 0 | 4 | - | Hardware |
+| LEAF3 | 26 | 22 | 0 | 4 | - | Hardware |
+| LEAF4 | 26 | 22 | 0 | 4 | - | Hardware |
+| SPINE1 | 37 | 33 | 0 | 4 | - | Hardware |
+| SPINE2 | 37 | 33 | 0 | 4 | - | Hardware |
+
+### Summary Totals Per Category
+
+| Test Category | Total Tests | Tests Passed | Tests Failed | Tests Skipped |
+| ------------- | ----------- | ------------ | ------------ | ------------- |
+| Configuration | 12 | 12 | 0 | 0 |
+| Connectivity | 32 | 32 | 0 | 0 |
+| Hardware | 24 | 0 | 0 | 24 |
+| Interfaces | 68 | 68 | 0 | 0 |
+| MLAG | 18 | 18 | 0 | 0 |
+| Routing | 6 | 6 | 0 | 0 |
+| Software | 12 | 12 | 0 | 0 |
+| System | 6 | 6 | 0 | 0 |
+
+## Failed Test Results Summary
+
+| ID | Device Under Test | Categories | Test | Description | Inputs | Result | Messages |
+| -- | ----------------- | ---------- | ---- | ----------- | ------ | -------| -------- |
+
+## All Test Results
+
+| ID | Device Under Test | Categories | Test | Description | Inputs | Result | Messages |
+| -- | ----------------- | ---------- | ---- | ----------- | ------ | -------| -------- |
+| 1 | LEAF1 | Configuration | VerifyRunningConfigDiffs | Verifies there is no difference between the running-config and the startup-config | - | PASS | - |
+| 2 | LEAF1 | Configuration | VerifyZeroTouch | Verifies ZeroTouch is disabled | - | PASS | - |
+| 3 | LEAF1 | Connectivity | VerifyLLDPNeighbors | Verifies that the provided LLDP neighbors are connected properly. | Local: Ethernet49 - Remote: SPINE1 Ethernet1 | PASS | - |
+| 4 | LEAF1 | Connectivity | VerifyLLDPNeighbors | Verifies that the provided LLDP neighbors are connected properly. | Local: Ethernet50 - Remote: SPINE2 Ethernet1 | PASS | - |
+| 5 | LEAF1 | Connectivity | VerifyLLDPNeighbors | Verifies that the provided LLDP neighbors are connected properly. | Local: Ethernet51 - Remote: LEAF2 Ethernet51 | PASS | - |
+| 6 | LEAF1 | Connectivity | VerifyLLDPNeighbors | Verifies that the provided LLDP neighbors are connected properly. | Local: Ethernet52 - Remote: LEAF2 Ethernet52 | PASS | - |
+| 7 | LEAF1 | Connectivity | VerifyReachability | Test the network reachability to one or many destination IP(s). | TEST PING TO INTERNET 8.8.8.8 | PASS | - |
+| 8 | LEAF1 | Hardware | VerifyEnvironmentCooling | Verifies the status of power supply fans and all fan trays. | Accepted States: 'ok' | SKIPPED | VerifyEnvironmentCooling test is not supported on vEOS-lab. |
+| 9 | LEAF1 | Hardware | VerifyEnvironmentPower | Verifies the power supplies status. | Accepted States: 'ok' | SKIPPED | VerifyEnvironmentPower test is not supported on vEOS-lab. |
+| 10 | LEAF1 | Hardware | VerifyTemperature | Verifies the device temperature. | - | SKIPPED | VerifyTemperature test is not supported on vEOS-lab. |
+| 11 | LEAF1 | Hardware | VerifyTransceiversManufacturers | Verifies if all transceivers come from approved manufacturers. | Accepted Manufacturers: 'Arista Networks', 'Arastra, Inc.', 'Not Present' | SKIPPED | VerifyTransceiversManufacturers test is not supported on vEOS-lab. |
+| 12 | LEAF1 | Interfaces | VerifyInterfacesStatus | Verifies the status of the provided interfaces. | Interface Ethernet49 - SPINE1_Ethernet1 = 'up' | PASS | - |
+| 13 | LEAF1 | Interfaces | VerifyInterfacesStatus | Verifies the status of the provided interfaces. | Interface Ethernet50 - SPINE2_Ethernet1 = 'up' | PASS | - |
+| 14 | LEAF1 | Interfaces | VerifyInterfacesStatus | Verifies the status of the provided interfaces. | Interface Ethernet51 - MLAG_PEER_LEAF2_Ethernet51 = 'up' | PASS | - |
+| 15 | LEAF1 | Interfaces | VerifyInterfacesStatus | Verifies the status of the provided interfaces. | Interface Ethernet52 - MLAG_PEER_LEAF2_Ethernet52 = 'up' | PASS | - |
+| 16 | LEAF1 | Interfaces | VerifyInterfacesStatus | Verifies the status of the provided interfaces. | Interface Port-Channel49 - SPINES_Po1 = 'up' | PASS | - |
+| 17 | LEAF1 | Interfaces | VerifyInterfacesStatus | Verifies the status of the provided interfaces. | Interface Port-Channel51 - MLAG_PEER_LEAF2_Po51 = 'up' | PASS | - |
+| 18 | LEAF1 | Interfaces | VerifyInterfacesStatus | Verifies the status of the provided interfaces. | Interface Vlan255 - Inband Management = 'up' | PASS | - |
+| 19 | LEAF1 | Interfaces | VerifyInterfacesStatus | Verifies the status of the provided interfaces. | Interface Vlan4094 - MLAG_PEER = 'up' | PASS | - |
+| 20 | LEAF1 | MLAG | VerifyMlagConfigSanity | Verifies there are no MLAG config-sanity inconsistencies. | - | PASS | - |
+| 21 | LEAF1 | MLAG | VerifyMlagInterfaces | Verifies there are no inactive or active-partial MLAG ports. | - | PASS | - |
+| 22 | LEAF1 | MLAG | VerifyMlagStatus | Verifies the health status of the MLAG configuration. | - | PASS | - |
+| 23 | LEAF1 | Routing | VerifyRoutingProtocolModel | Verifies the configured routing protocol model. | - | PASS | - |
+| 24 | LEAF1 | Software | VerifyEOSVersion | Verifies the EOS version of the device. | - | PASS | - |
+| 25 | LEAF1 | Software | VerifyTerminAttrVersion | Verifies the TerminAttr version of the device. | - | PASS | - |
+| 26 | LEAF1 | System | VerifyReloadCause | Verifies the last reload cause of the device. | - | PASS | - |
+| 27 | LEAF2 | Configuration | VerifyRunningConfigDiffs | Verifies there is no difference between the running-config and the startup-config | - | PASS | - |
+| 28 | LEAF2 | Configuration | VerifyZeroTouch | Verifies ZeroTouch is disabled | - | PASS | - |
+| 29 | LEAF2 | Connectivity | VerifyLLDPNeighbors | Verifies that the provided LLDP neighbors are connected properly. | Local: Ethernet49 - Remote: SPINE1 Ethernet2 | PASS | - |
+| 30 | LEAF2 | Connectivity | VerifyLLDPNeighbors | Verifies that the provided LLDP neighbors are connected properly. | Local: Ethernet50 - Remote: SPINE2 Ethernet2 | PASS | - |
+| 31 | LEAF2 | Connectivity | VerifyLLDPNeighbors | Verifies that the provided LLDP neighbors are connected properly. | Local: Ethernet51 - Remote: LEAF1 Ethernet51 | PASS | - |
+| 32 | LEAF2 | Connectivity | VerifyLLDPNeighbors | Verifies that the provided LLDP neighbors are connected properly. | Local: Ethernet52 - Remote: LEAF1 Ethernet52 | PASS | - |
+| 33 | LEAF2 | Connectivity | VerifyReachability | Test the network reachability to one or many destination IP(s). | TEST PING TO INTERNET 8.8.8.8 | PASS | - |
+| 34 | LEAF2 | Hardware | VerifyEnvironmentCooling | Verifies the status of power supply fans and all fan trays. | Accepted States: 'ok' | SKIPPED | VerifyEnvironmentCooling test is not supported on vEOS-lab. |
+| 35 | LEAF2 | Hardware | VerifyEnvironmentPower | Verifies the power supplies status. | Accepted States: 'ok' | SKIPPED | VerifyEnvironmentPower test is not supported on vEOS-lab. |
+| 36 | LEAF2 | Hardware | VerifyTemperature | Verifies the device temperature. | - | SKIPPED | VerifyTemperature test is not supported on vEOS-lab. |
+| 37 | LEAF2 | Hardware | VerifyTransceiversManufacturers | Verifies if all transceivers come from approved manufacturers. | Accepted Manufacturers: 'Arista Networks', 'Arastra, Inc.', 'Not Present' | SKIPPED | VerifyTransceiversManufacturers test is not supported on vEOS-lab. |
+| 38 | LEAF2 | Interfaces | VerifyInterfacesStatus | Verifies the status of the provided interfaces. | Interface Ethernet49 - SPINE1_Ethernet2 = 'up' | PASS | - |
+| 39 | LEAF2 | Interfaces | VerifyInterfacesStatus | Verifies the status of the provided interfaces. | Interface Ethernet50 - SPINE2_Ethernet2 = 'up' | PASS | - |
+| 40 | LEAF2 | Interfaces | VerifyInterfacesStatus | Verifies the status of the provided interfaces. | Interface Ethernet51 - MLAG_PEER_LEAF1_Ethernet51 = 'up' | PASS | - |
+| 41 | LEAF2 | Interfaces | VerifyInterfacesStatus | Verifies the status of the provided interfaces. | Interface Ethernet52 - MLAG_PEER_LEAF1_Ethernet52 = 'up' | PASS | - |
+| 42 | LEAF2 | Interfaces | VerifyInterfacesStatus | Verifies the status of the provided interfaces. | Interface Port-Channel49 - SPINES_Po1 = 'up' | PASS | - |
+| 43 | LEAF2 | Interfaces | VerifyInterfacesStatus | Verifies the status of the provided interfaces. | Interface Port-Channel51 - MLAG_PEER_LEAF1_Po51 = 'up' | PASS | - |
+| 44 | LEAF2 | Interfaces | VerifyInterfacesStatus | Verifies the status of the provided interfaces. | Interface Vlan255 - Inband Management = 'up' | PASS | - |
+| 45 | LEAF2 | Interfaces | VerifyInterfacesStatus | Verifies the status of the provided interfaces. | Interface Vlan4094 - MLAG_PEER = 'up' | PASS | - |
+| 46 | LEAF2 | MLAG | VerifyMlagConfigSanity | Verifies there are no MLAG config-sanity inconsistencies. | - | PASS | - |
+| 47 | LEAF2 | MLAG | VerifyMlagInterfaces | Verifies there are no inactive or active-partial MLAG ports. | - | PASS | - |
+| 48 | LEAF2 | MLAG | VerifyMlagStatus | Verifies the health status of the MLAG configuration. | - | PASS | - |
+| 49 | LEAF2 | Routing | VerifyRoutingProtocolModel | Verifies the configured routing protocol model. | - | PASS | - |
+| 50 | LEAF2 | Software | VerifyEOSVersion | Verifies the EOS version of the device. | - | PASS | - |
+| 51 | LEAF2 | Software | VerifyTerminAttrVersion | Verifies the TerminAttr version of the device. | - | PASS | - |
+| 52 | LEAF2 | System | VerifyReloadCause | Verifies the last reload cause of the device. | - | PASS | - |
+| 53 | LEAF3 | Configuration | VerifyRunningConfigDiffs | Verifies there is no difference between the running-config and the startup-config | - | PASS | - |
+| 54 | LEAF3 | Configuration | VerifyZeroTouch | Verifies ZeroTouch is disabled | - | PASS | - |
+| 55 | LEAF3 | Connectivity | VerifyLLDPNeighbors | Verifies that the provided LLDP neighbors are connected properly. | Local: Ethernet49 - Remote: SPINE1 Ethernet3 | PASS | - |
+| 56 | LEAF3 | Connectivity | VerifyLLDPNeighbors | Verifies that the provided LLDP neighbors are connected properly. | Local: Ethernet50 - Remote: SPINE2 Ethernet3 | PASS | - |
+| 57 | LEAF3 | Connectivity | VerifyLLDPNeighbors | Verifies that the provided LLDP neighbors are connected properly. | Local: Ethernet51 - Remote: LEAF4 Ethernet51 | PASS | - |
+| 58 | LEAF3 | Connectivity | VerifyLLDPNeighbors | Verifies that the provided LLDP neighbors are connected properly. | Local: Ethernet52 - Remote: LEAF4 Ethernet52 | PASS | - |
+| 59 | LEAF3 | Connectivity | VerifyReachability | Test the network reachability to one or many destination IP(s). | TEST PING TO INTERNET 8.8.8.8 | PASS | - |
+| 60 | LEAF3 | Hardware | VerifyEnvironmentCooling | Verifies the status of power supply fans and all fan trays. | Accepted States: 'ok' | SKIPPED | VerifyEnvironmentCooling test is not supported on vEOS-lab. |
+| 61 | LEAF3 | Hardware | VerifyEnvironmentPower | Verifies the power supplies status. | Accepted States: 'ok' | SKIPPED | VerifyEnvironmentPower test is not supported on vEOS-lab. |
+| 62 | LEAF3 | Hardware | VerifyTemperature | Verifies the device temperature. | - | SKIPPED | VerifyTemperature test is not supported on vEOS-lab. |
+| 63 | LEAF3 | Hardware | VerifyTransceiversManufacturers | Verifies if all transceivers come from approved manufacturers. | Accepted Manufacturers: 'Arista Networks', 'Arastra, Inc.', 'Not Present' | SKIPPED | VerifyTransceiversManufacturers test is not supported on vEOS-lab. |
+| 64 | LEAF3 | Interfaces | VerifyInterfacesStatus | Verifies the status of the provided interfaces. | Interface Ethernet49 - SPINE1_Ethernet3 = 'up' | PASS | - |
+| 65 | LEAF3 | Interfaces | VerifyInterfacesStatus | Verifies the status of the provided interfaces. | Interface Ethernet50 - SPINE2_Ethernet3 = 'up' | PASS | - |
+| 66 | LEAF3 | Interfaces | VerifyInterfacesStatus | Verifies the status of the provided interfaces. | Interface Ethernet51 - MLAG_PEER_LEAF4_Ethernet51 = 'up' | PASS | - |
+| 67 | LEAF3 | Interfaces | VerifyInterfacesStatus | Verifies the status of the provided interfaces. | Interface Ethernet52 - MLAG_PEER_LEAF4_Ethernet52 = 'up' | PASS | - |
+| 68 | LEAF3 | Interfaces | VerifyInterfacesStatus | Verifies the status of the provided interfaces. | Interface Port-Channel49 - SPINES_Po3 = 'up' | PASS | - |
+| 69 | LEAF3 | Interfaces | VerifyInterfacesStatus | Verifies the status of the provided interfaces. | Interface Port-Channel51 - MLAG_PEER_LEAF4_Po51 = 'up' | PASS | - |
+| 70 | LEAF3 | Interfaces | VerifyInterfacesStatus | Verifies the status of the provided interfaces. | Interface Vlan255 - Inband Management = 'up' | PASS | - |
+| 71 | LEAF3 | Interfaces | VerifyInterfacesStatus | Verifies the status of the provided interfaces. | Interface Vlan4094 - MLAG_PEER = 'up' | PASS | - |
+| 72 | LEAF3 | MLAG | VerifyMlagConfigSanity | Verifies there are no MLAG config-sanity inconsistencies. | - | PASS | - |
+| 73 | LEAF3 | MLAG | VerifyMlagInterfaces | Verifies there are no inactive or active-partial MLAG ports. | - | PASS | - |
+| 74 | LEAF3 | MLAG | VerifyMlagStatus | Verifies the health status of the MLAG configuration. | - | PASS | - |
+| 75 | LEAF3 | Routing | VerifyRoutingProtocolModel | Verifies the configured routing protocol model. | - | PASS | - |
+| 76 | LEAF3 | Software | VerifyEOSVersion | Verifies the EOS version of the device. | - | PASS | - |
+| 77 | LEAF3 | Software | VerifyTerminAttrVersion | Verifies the TerminAttr version of the device. | - | PASS | - |
+| 78 | LEAF3 | System | VerifyReloadCause | Verifies the last reload cause of the device. | - | PASS | - |
+| 79 | LEAF4 | Configuration | VerifyRunningConfigDiffs | Verifies there is no difference between the running-config and the startup-config | - | PASS | - |
+| 80 | LEAF4 | Configuration | VerifyZeroTouch | Verifies ZeroTouch is disabled | - | PASS | - |
+| 81 | LEAF4 | Connectivity | VerifyLLDPNeighbors | Verifies that the provided LLDP neighbors are connected properly. | Local: Ethernet49 - Remote: SPINE1 Ethernet4 | PASS | - |
+| 82 | LEAF4 | Connectivity | VerifyLLDPNeighbors | Verifies that the provided LLDP neighbors are connected properly. | Local: Ethernet50 - Remote: SPINE2 Ethernet4 | PASS | - |
+| 83 | LEAF4 | Connectivity | VerifyLLDPNeighbors | Verifies that the provided LLDP neighbors are connected properly. | Local: Ethernet51 - Remote: LEAF3 Ethernet51 | PASS | - |
+| 84 | LEAF4 | Connectivity | VerifyLLDPNeighbors | Verifies that the provided LLDP neighbors are connected properly. | Local: Ethernet52 - Remote: LEAF3 Ethernet52 | PASS | - |
+| 85 | LEAF4 | Connectivity | VerifyReachability | Test the network reachability to one or many destination IP(s). | TEST PING TO INTERNET 8.8.8.8 | PASS | - |
+| 86 | LEAF4 | Hardware | VerifyEnvironmentCooling | Verifies the status of power supply fans and all fan trays. | Accepted States: 'ok' | SKIPPED | VerifyEnvironmentCooling test is not supported on vEOS-lab. |
+| 87 | LEAF4 | Hardware | VerifyEnvironmentPower | Verifies the power supplies status. | Accepted States: 'ok' | SKIPPED | VerifyEnvironmentPower test is not supported on vEOS-lab. |
+| 88 | LEAF4 | Hardware | VerifyTemperature | Verifies the device temperature. | - | SKIPPED | VerifyTemperature test is not supported on vEOS-lab. |
+| 89 | LEAF4 | Hardware | VerifyTransceiversManufacturers | Verifies if all transceivers come from approved manufacturers. | Accepted Manufacturers: 'Arista Networks', 'Arastra, Inc.', 'Not Present' | SKIPPED | VerifyTransceiversManufacturers test is not supported on vEOS-lab. |
+| 90 | LEAF4 | Interfaces | VerifyInterfacesStatus | Verifies the status of the provided interfaces. | Interface Ethernet49 - SPINE1_Ethernet4 = 'up' | PASS | - |
+| 91 | LEAF4 | Interfaces | VerifyInterfacesStatus | Verifies the status of the provided interfaces. | Interface Ethernet50 - SPINE2_Ethernet4 = 'up' | PASS | - |
+| 92 | LEAF4 | Interfaces | VerifyInterfacesStatus | Verifies the status of the provided interfaces. | Interface Ethernet51 - MLAG_PEER_LEAF3_Ethernet51 = 'up' | PASS | - |
+| 93 | LEAF4 | Interfaces | VerifyInterfacesStatus | Verifies the status of the provided interfaces. | Interface Ethernet52 - MLAG_PEER_LEAF3_Ethernet52 = 'up' | PASS | - |
+| 94 | LEAF4 | Interfaces | VerifyInterfacesStatus | Verifies the status of the provided interfaces. | Interface Port-Channel49 - SPINES_Po3 = 'up' | PASS | - |
+| 95 | LEAF4 | Interfaces | VerifyInterfacesStatus | Verifies the status of the provided interfaces. | Interface Port-Channel51 - MLAG_PEER_LEAF3_Po51 = 'up' | PASS | - |
+| 96 | LEAF4 | Interfaces | VerifyInterfacesStatus | Verifies the status of the provided interfaces. | Interface Vlan255 - Inband Management = 'up' | PASS | - |
+| 97 | LEAF4 | Interfaces | VerifyInterfacesStatus | Verifies the status of the provided interfaces. | Interface Vlan4094 - MLAG_PEER = 'up' | PASS | - |
+| 98 | LEAF4 | MLAG | VerifyMlagConfigSanity | Verifies there are no MLAG config-sanity inconsistencies. | - | PASS | - |
+| 99 | LEAF4 | MLAG | VerifyMlagInterfaces | Verifies there are no inactive or active-partial MLAG ports. | - | PASS | - |
+| 100 | LEAF4 | MLAG | VerifyMlagStatus | Verifies the health status of the MLAG configuration. | - | PASS | - |
+| 101 | LEAF4 | Routing | VerifyRoutingProtocolModel | Verifies the configured routing protocol model. | - | PASS | - |
+| 102 | LEAF4 | Software | VerifyEOSVersion | Verifies the EOS version of the device. | - | PASS | - |
+| 103 | LEAF4 | Software | VerifyTerminAttrVersion | Verifies the TerminAttr version of the device. | - | PASS | - |
+| 104 | LEAF4 | System | VerifyReloadCause | Verifies the last reload cause of the device. | - | PASS | - |
+| 105 | SPINE1 | Configuration | VerifyRunningConfigDiffs | Verifies there is no difference between the running-config and the startup-config | - | PASS | - |
+| 106 | SPINE1 | Configuration | VerifyZeroTouch | Verifies ZeroTouch is disabled | - | PASS | - |
+| 107 | SPINE1 | Connectivity | VerifyLLDPNeighbors | Verifies that the provided LLDP neighbors are connected properly. | Local: Ethernet1 - Remote: LEAF1 Ethernet49 | PASS | - |
+| 108 | SPINE1 | Connectivity | VerifyLLDPNeighbors | Verifies that the provided LLDP neighbors are connected properly. | Local: Ethernet103/1 - Remote: SPINE2 Ethernet103/1 | PASS | - |
+| 109 | SPINE1 | Connectivity | VerifyLLDPNeighbors | Verifies that the provided LLDP neighbors are connected properly. | Local: Ethernet104/1 - Remote: SPINE2 Ethernet104/1 | PASS | - |
+| 110 | SPINE1 | Connectivity | VerifyLLDPNeighbors | Verifies that the provided LLDP neighbors are connected properly. | Local: Ethernet2 - Remote: LEAF2 Ethernet49 | PASS | - |
+| 111 | SPINE1 | Connectivity | VerifyLLDPNeighbors | Verifies that the provided LLDP neighbors are connected properly. | Local: Ethernet3 - Remote: LEAF3 Ethernet49 | PASS | - |
+| 112 | SPINE1 | Connectivity | VerifyLLDPNeighbors | Verifies that the provided LLDP neighbors are connected properly. | Local: Ethernet4 - Remote: LEAF4 Ethernet49 | PASS | - |
+| 113 | SPINE1 | Hardware | VerifyEnvironmentCooling | Verifies the status of power supply fans and all fan trays. | Accepted States: 'ok' | SKIPPED | VerifyEnvironmentCooling test is not supported on vEOS-lab. |
+| 114 | SPINE1 | Hardware | VerifyEnvironmentPower | Verifies the power supplies status. | Accepted States: 'ok' | SKIPPED | VerifyEnvironmentPower test is not supported on vEOS-lab. |
+| 115 | SPINE1 | Hardware | VerifyTemperature | Verifies the device temperature. | - | SKIPPED | VerifyTemperature test is not supported on vEOS-lab. |
+| 116 | SPINE1 | Hardware | VerifyTransceiversManufacturers | Verifies if all transceivers come from approved manufacturers. | Accepted Manufacturers: 'Arista Networks', 'Arastra, Inc.', 'Not Present' | SKIPPED | VerifyTransceiversManufacturers test is not supported on vEOS-lab. |
+| 117 | SPINE1 | Interfaces | VerifyInterfacesStatus | Verifies the status of the provided interfaces. | Interface Ethernet1 - LEAF1_Ethernet49 = 'up' | PASS | - |
+| 118 | SPINE1 | Interfaces | VerifyInterfacesStatus | Verifies the status of the provided interfaces. | Interface Ethernet103/1 - MLAG_PEER_SPINE2_Ethernet103/1 = 'up' | PASS | - |
+| 119 | SPINE1 | Interfaces | VerifyInterfacesStatus | Verifies the status of the provided interfaces. | Interface Ethernet104/1 - MLAG_PEER_SPINE2_Ethernet104/1 = 'up' | PASS | - |
+| 120 | SPINE1 | Interfaces | VerifyInterfacesStatus | Verifies the status of the provided interfaces. | Interface Ethernet2 - LEAF2_Ethernet49 = 'up' | PASS | - |
+| 121 | SPINE1 | Interfaces | VerifyInterfacesStatus | Verifies the status of the provided interfaces. | Interface Ethernet3 - LEAF3_Ethernet49 = 'up' | PASS | - |
+| 122 | SPINE1 | Interfaces | VerifyInterfacesStatus | Verifies the status of the provided interfaces. | Interface Ethernet4 - LEAF4_Ethernet49 = 'up' | PASS | - |
+| 123 | SPINE1 | Interfaces | VerifyInterfacesStatus | Verifies the status of the provided interfaces. | Interface Loopback0 - Router_ID = 'up' | PASS | - |
+| 124 | SPINE1 | Interfaces | VerifyInterfacesStatus | Verifies the status of the provided interfaces. | Interface Loopback88 = 'up' | PASS | - |
+| 125 | SPINE1 | Interfaces | VerifyInterfacesStatus | Verifies the status of the provided interfaces. | Interface Port-Channel1 - POD1_Po49 = 'up' | PASS | - |
+| 126 | SPINE1 | Interfaces | VerifyInterfacesStatus | Verifies the status of the provided interfaces. | Interface Port-Channel1031 - MLAG_PEER_SPINE2_Po1031 = 'up' | PASS | - |
+| 127 | SPINE1 | Interfaces | VerifyInterfacesStatus | Verifies the status of the provided interfaces. | Interface Port-Channel3 - POD2_Po49 = 'up' | PASS | - |
+| 128 | SPINE1 | Interfaces | VerifyInterfacesStatus | Verifies the status of the provided interfaces. | Interface Vlan10 - Ten = 'up' | PASS | - |
+| 129 | SPINE1 | Interfaces | VerifyInterfacesStatus | Verifies the status of the provided interfaces. | Interface Vlan20 - Twenty = 'up' | PASS | - |
+| 130 | SPINE1 | Interfaces | VerifyInterfacesStatus | Verifies the status of the provided interfaces. | Interface Vlan255 - Inband Management = 'up' | PASS | - |
+| 131 | SPINE1 | Interfaces | VerifyInterfacesStatus | Verifies the status of the provided interfaces. | Interface Vlan30 - Thirty = 'up' | PASS | - |
+| 132 | SPINE1 | Interfaces | VerifyInterfacesStatus | Verifies the status of the provided interfaces. | Interface Vlan4093 - MLAG_PEER_L3_PEERING = 'up' | PASS | - |
+| 133 | SPINE1 | Interfaces | VerifyInterfacesStatus | Verifies the status of the provided interfaces. | Interface Vlan4094 - MLAG_PEER = 'up' | PASS | - |
+| 134 | SPINE1 | Interfaces | VerifyLoopbackCount | Verifies the number of loopback interfaces and their status. | - | PASS | - |
+| 135 | SPINE1 | MLAG | VerifyMlagConfigSanity | Verifies there are no MLAG config-sanity inconsistencies. | - | PASS | - |
+| 136 | SPINE1 | MLAG | VerifyMlagInterfaces | Verifies there are no inactive or active-partial MLAG ports. | - | PASS | - |
+| 137 | SPINE1 | MLAG | VerifyMlagStatus | Verifies the health status of the MLAG configuration. | - | PASS | - |
+| 138 | SPINE1 | Routing | VerifyRoutingProtocolModel | Verifies the configured routing protocol model. | - | PASS | - |
+| 139 | SPINE1 | Software | VerifyEOSVersion | Verifies the EOS version of the device. | - | PASS | - |
+| 140 | SPINE1 | Software | VerifyTerminAttrVersion | Verifies the TerminAttr version of the device. | - | PASS | - |
+| 141 | SPINE1 | System | VerifyReloadCause | Verifies the last reload cause of the device. | - | PASS | - |
+| 142 | SPINE2 | Configuration | VerifyRunningConfigDiffs | Verifies there is no difference between the running-config and the startup-config | - | PASS | - |
+| 143 | SPINE2 | Configuration | VerifyZeroTouch | Verifies ZeroTouch is disabled | - | PASS | - |
+| 144 | SPINE2 | Connectivity | VerifyLLDPNeighbors | Verifies that the provided LLDP neighbors are connected properly. | Local: Ethernet1 - Remote: LEAF1 Ethernet50 | PASS | - |
+| 145 | SPINE2 | Connectivity | VerifyLLDPNeighbors | Verifies that the provided LLDP neighbors are connected properly. | Local: Ethernet103/1 - Remote: SPINE1 Ethernet103/1 | PASS | - |
+| 146 | SPINE2 | Connectivity | VerifyLLDPNeighbors | Verifies that the provided LLDP neighbors are connected properly. | Local: Ethernet104/1 - Remote: SPINE1 Ethernet104/1 | PASS | - |
+| 147 | SPINE2 | Connectivity | VerifyLLDPNeighbors | Verifies that the provided LLDP neighbors are connected properly. | Local: Ethernet2 - Remote: LEAF2 Ethernet50 | PASS | - |
+| 148 | SPINE2 | Connectivity | VerifyLLDPNeighbors | Verifies that the provided LLDP neighbors are connected properly. | Local: Ethernet3 - Remote: LEAF3 Ethernet50 | PASS | - |
+| 149 | SPINE2 | Connectivity | VerifyLLDPNeighbors | Verifies that the provided LLDP neighbors are connected properly. | Local: Ethernet4 - Remote: LEAF4 Ethernet50 | PASS | - |
+| 150 | SPINE2 | Hardware | VerifyEnvironmentCooling | Verifies the status of power supply fans and all fan trays. | Accepted States: 'ok' | SKIPPED | VerifyEnvironmentCooling test is not supported on vEOS-lab. |
+| 151 | SPINE2 | Hardware | VerifyEnvironmentPower | Verifies the power supplies status. | Accepted States: 'ok' | SKIPPED | VerifyEnvironmentPower test is not supported on vEOS-lab. |
+| 152 | SPINE2 | Hardware | VerifyTemperature | Verifies the device temperature. | - | SKIPPED | VerifyTemperature test is not supported on vEOS-lab. |
+| 153 | SPINE2 | Hardware | VerifyTransceiversManufacturers | Verifies if all transceivers come from approved manufacturers. | Accepted Manufacturers: 'Arista Networks', 'Arastra, Inc.', 'Not Present' | SKIPPED | VerifyTransceiversManufacturers test is not supported on vEOS-lab. |
+| 154 | SPINE2 | Interfaces | VerifyInterfacesStatus | Verifies the status of the provided interfaces. | Interface Ethernet1 - LEAF1_Ethernet50 = 'up' | PASS | - |
+| 155 | SPINE2 | Interfaces | VerifyInterfacesStatus | Verifies the status of the provided interfaces. | Interface Ethernet103/1 - MLAG_PEER_SPINE1_Ethernet103/1 = 'up' | PASS | - |
+| 156 | SPINE2 | Interfaces | VerifyInterfacesStatus | Verifies the status of the provided interfaces. | Interface Ethernet104/1 - MLAG_PEER_SPINE1_Ethernet104/1 = 'up' | PASS | - |
+| 157 | SPINE2 | Interfaces | VerifyInterfacesStatus | Verifies the status of the provided interfaces. | Interface Ethernet2 - LEAF2_Ethernet50 = 'up' | PASS | - |
+| 158 | SPINE2 | Interfaces | VerifyInterfacesStatus | Verifies the status of the provided interfaces. | Interface Ethernet3 - LEAF3_Ethernet50 = 'up' | PASS | - |
+| 159 | SPINE2 | Interfaces | VerifyInterfacesStatus | Verifies the status of the provided interfaces. | Interface Ethernet4 - LEAF4_Ethernet50 = 'up' | PASS | - |
+| 160 | SPINE2 | Interfaces | VerifyInterfacesStatus | Verifies the status of the provided interfaces. | Interface Loopback0 - Router_ID = 'up' | PASS | - |
+| 161 | SPINE2 | Interfaces | VerifyInterfacesStatus | Verifies the status of the provided interfaces. | Interface Loopback88 = 'up' | PASS | - |
+| 162 | SPINE2 | Interfaces | VerifyInterfacesStatus | Verifies the status of the provided interfaces. | Interface Port-Channel1 - POD1_Po49 = 'up' | PASS | - |
+| 163 | SPINE2 | Interfaces | VerifyInterfacesStatus | Verifies the status of the provided interfaces. | Interface Port-Channel1031 - MLAG_PEER_SPINE1_Po1031 = 'up' | PASS | - |
+| 164 | SPINE2 | Interfaces | VerifyInterfacesStatus | Verifies the status of the provided interfaces. | Interface Port-Channel3 - POD2_Po49 = 'up' | PASS | - |
+| 165 | SPINE2 | Interfaces | VerifyInterfacesStatus | Verifies the status of the provided interfaces. | Interface Vlan10 - Ten = 'up' | PASS | - |
+| 166 | SPINE2 | Interfaces | VerifyInterfacesStatus | Verifies the status of the provided interfaces. | Interface Vlan20 - Twenty = 'up' | PASS | - |
+| 167 | SPINE2 | Interfaces | VerifyInterfacesStatus | Verifies the status of the provided interfaces. | Interface Vlan255 - Inband Management = 'up' | PASS | - |
+| 168 | SPINE2 | Interfaces | VerifyInterfacesStatus | Verifies the status of the provided interfaces. | Interface Vlan30 - Thirty = 'up' | PASS | - |
+| 169 | SPINE2 | Interfaces | VerifyInterfacesStatus | Verifies the status of the provided interfaces. | Interface Vlan4093 - MLAG_PEER_L3_PEERING = 'up' | PASS | - |
+| 170 | SPINE2 | Interfaces | VerifyInterfacesStatus | Verifies the status of the provided interfaces. | Interface Vlan4094 - MLAG_PEER = 'up' | PASS | - |
+| 171 | SPINE2 | Interfaces | VerifyLoopbackCount | Verifies the number of loopback interfaces and their status. | - | PASS | - |
+| 172 | SPINE2 | MLAG | VerifyMlagConfigSanity | Verifies there are no MLAG config-sanity inconsistencies. | - | PASS | - |
+| 173 | SPINE2 | MLAG | VerifyMlagInterfaces | Verifies there are no inactive or active-partial MLAG ports. | - | PASS | - |
+| 174 | SPINE2 | MLAG | VerifyMlagStatus | Verifies the health status of the MLAG configuration. | - | PASS | - |
+| 175 | SPINE2 | Routing | VerifyRoutingProtocolModel | Verifies the configured routing protocol model. | - | PASS | - |
+| 176 | SPINE2 | Software | VerifyEOSVersion | Verifies the EOS version of the device. | - | PASS | - |
+| 177 | SPINE2 | Software | VerifyTerminAttrVersion | Verifies the TerminAttr version of the device. | - | PASS | - |
+| 178 | SPINE2 | System | VerifyReloadCause | Verifies the last reload cause of the device. | - | PASS | - |

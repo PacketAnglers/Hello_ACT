@@ -1,0 +1,8 @@
+anta.tests.connectivity:
+  - VerifyReachability:
+      hosts:
+        - source: Vlan255
+          destination: 8.8.8.8
+          vrf: default
+      result_overwrite:
+        custom_field: 'TEST PING TO INTERNET 8.8.8.8'

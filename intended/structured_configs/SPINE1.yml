@@ -56,6 +56,9 @@ vlans:
 - id: 30
   name: Thirty
   tenant: MY_FABRIC
+- id: 255
+  tenant: system
+  name: INBAND_MGMT
 vlan_interfaces:
 - name: Vlan4093
   description: MLAG_PEER_L3_PEERING
@@ -91,6 +94,16 @@ vlan_interfaces:
   ip_address: 10.30.30.2/24
   ip_virtual_router_addresses:
   - 10.30.30.1
+- name: Vlan255
+  description: Inband Management
+  shutdown: false
+  mtu: 1500
+  ip_attached_host_route_export:
+    enabled: true
+    distance: 19
+  ip_address: 10.255.255.2/24
+  ip_virtual_router_addresses:
+  - 10.255.255.1
 port_channel_interfaces:
 - name: Port-Channel1031
   description: MLAG_PEER_SPINE2_Po1031
@@ -105,14 +118,14 @@ port_channel_interfaces:
   type: switched
   shutdown: false
   mode: trunk
-  vlans: 10,20,30
+  vlans: 10,20,30,255
   mlag: 1
 - name: Port-Channel3
   description: POD2_Po49
   type: switched
   shutdown: false
   mode: trunk
-  vlans: 10,20,30
+  vlans: 10,20,30,255
   mlag: 3
 ethernet_interfaces:
 - name: Ethernet103/1
@@ -188,6 +201,8 @@ loopback_interfaces:
   shutdown: false
   ip_address: 10.1.252.1/32
   ospf_area: 0.0.0.0
+- name: Loopback88
+  ip_address: 8.8.8.8/32
 router_ospf:
   process_ids:
   - id: 1

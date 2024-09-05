@@ -1,0 +1,21 @@
+anta.tests.configuration:
+  - VerifyZeroTouch: # Verifies ZeroTouch is disabled.
+  - VerifyRunningConfigDiffs:
+
+anta.tests.software:
+  - VerifyEOSVersion:
+      versions:
+        - 4.31.4M
+  - VerifyTerminAttrVersion:
+      versions:
+        - v1.31.4
+
+anta.tests.routing:
+  generic:
+    - VerifyRoutingProtocolModel:
+        model: multi-agent
+
+anta.tests.mlag:
+  - VerifyMlagStatus:
+  - VerifyMlagInterfaces:
+  - VerifyMlagConfigSanity:

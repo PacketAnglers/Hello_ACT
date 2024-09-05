@@ -1,0 +1,126 @@
+anta.tests.configuration:
+- VerifyZeroTouch: null
+- VerifyRunningConfigDiffs: null
+anta.tests.connectivity:
+- VerifyLLDPNeighbors:
+    neighbors:
+    - neighbor_device: LEAF4
+      neighbor_port: Ethernet51
+      port: Ethernet51
+    result_overwrite:
+      custom_field: 'Local: Ethernet51 - Remote: LEAF4 Ethernet51'
+- VerifyLLDPNeighbors:
+    neighbors:
+    - neighbor_device: LEAF4
+      neighbor_port: Ethernet52
+      port: Ethernet52
+    result_overwrite:
+      custom_field: 'Local: Ethernet52 - Remote: LEAF4 Ethernet52'
+- VerifyLLDPNeighbors:
+    neighbors:
+    - neighbor_device: SPINE1
+      neighbor_port: Ethernet3
+      port: Ethernet49
+    result_overwrite:
+      custom_field: 'Local: Ethernet49 - Remote: SPINE1 Ethernet3'
+- VerifyLLDPNeighbors:
+    neighbors:
+    - neighbor_device: SPINE2
+      neighbor_port: Ethernet3
+      port: Ethernet50
+    result_overwrite:
+      custom_field: 'Local: Ethernet50 - Remote: SPINE2 Ethernet3'
+- VerifyReachability:
+    hosts:
+    - destination: 8.8.8.8
+      source: Vlan255
+      vrf: default
+    result_overwrite:
+      custom_field: TEST PING TO INTERNET 8.8.8.8
+anta.tests.hardware:
+- VerifyEnvironmentPower:
+    result_overwrite:
+      custom_field: 'Accepted States: ''ok'''
+    states:
+    - ok
+- VerifyEnvironmentCooling:
+    result_overwrite:
+      custom_field: 'Accepted States: ''ok'''
+    states:
+    - ok
+- VerifyTemperature: null
+- VerifyTransceiversManufacturers:
+    manufacturers:
+    - Arista Networks
+    - Arastra, Inc.
+    - Not Present
+    result_overwrite:
+      custom_field: 'Accepted Manufacturers: ''Arista Networks'', ''Arastra, Inc.'',
+        ''Not Present'''
+anta.tests.interfaces:
+- VerifyInterfacesStatus:
+    interfaces:
+    - name: Ethernet51
+      status: up
+    result_overwrite:
+      custom_field: Interface Ethernet51 - MLAG_PEER_LEAF4_Ethernet51 = 'up'
+- VerifyInterfacesStatus:
+    interfaces:
+    - name: Ethernet52
+      status: up
+    result_overwrite:
+      custom_field: Interface Ethernet52 - MLAG_PEER_LEAF4_Ethernet52 = 'up'
+- VerifyInterfacesStatus:
+    interfaces:
+    - name: Ethernet49
+      status: up
+    result_overwrite:
+      custom_field: Interface Ethernet49 - SPINE1_Ethernet3 = 'up'
+- VerifyInterfacesStatus:
+    interfaces:
+    - name: Ethernet50
+      status: up
+    result_overwrite:
+      custom_field: Interface Ethernet50 - SPINE2_Ethernet3 = 'up'
+- VerifyInterfacesStatus:
+    interfaces:
+    - name: Port-Channel51
+      status: up
+    result_overwrite:
+      custom_field: Interface Port-Channel51 - MLAG_PEER_LEAF4_Po51 = 'up'
+- VerifyInterfacesStatus:
+    interfaces:
+    - name: Port-Channel49
+      status: up
+    result_overwrite:
+      custom_field: Interface Port-Channel49 - SPINES_Po3 = 'up'
+- VerifyInterfacesStatus:
+    interfaces:
+    - name: Vlan4094
+      status: up
+    result_overwrite:
+      custom_field: Interface Vlan4094 - MLAG_PEER = 'up'
+- VerifyInterfacesStatus:
+    interfaces:
+    - name: Vlan255
+      status: up
+    result_overwrite:
+      custom_field: Interface Vlan255 - Inband Management = 'up'
+anta.tests.mlag:
+- VerifyMlagStatus: null
+- VerifyMlagStatus: null
+- VerifyMlagInterfaces: null
+- VerifyMlagConfigSanity: null
+anta.tests.routing:
+  generic:
+  - VerifyRoutingProtocolModel:
+      model: multi-agent
+anta.tests.software:
+- VerifyEOSVersion:
+    versions:
+    - 4.31.4M
+- VerifyTerminAttrVersion:
+    versions:
+    - v1.31.4
+anta.tests.system:
+- VerifyReloadCause: null

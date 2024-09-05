@@ -1,0 +1,373 @@
+[
+  {
+    "name": "SPINE2",
+    "test": "VerifyRunningConfigDiffs",
+    "categories": [
+      "configuration"
+    ],
+    "description": "Verifies there is no difference between the running-config and the startup-config",
+    "result": "success"
+  },
+  {
+    "name": "SPINE2",
+    "test": "VerifyZeroTouch",
+    "categories": [
+      "configuration"
+    ],
+    "description": "Verifies ZeroTouch is disabled",
+    "result": "success"
+  },
+  {
+    "name": "SPINE2",
+    "test": "VerifyLLDPNeighbors",
+    "categories": [
+      "connectivity"
+    ],
+    "description": "Verifies that the provided LLDP neighbors are connected properly.",
+    "result": "success",
+    "custom_field": "Local: Ethernet1 - Remote: LEAF1 Ethernet50"
+  },
+  {
+    "name": "SPINE2",
+    "test": "VerifyLLDPNeighbors",
+    "categories": [
+      "connectivity"
+    ],
+    "description": "Verifies that the provided LLDP neighbors are connected properly.",
+    "result": "success",
+    "custom_field": "Local: Ethernet103/1 - Remote: SPINE1 Ethernet103/1"
+  },
+  {
+    "name": "SPINE2",
+    "test": "VerifyLLDPNeighbors",
+    "categories": [
+      "connectivity"
+    ],
+    "description": "Verifies that the provided LLDP neighbors are connected properly.",
+    "result": "success",
+    "custom_field": "Local: Ethernet104/1 - Remote: SPINE1 Ethernet104/1"
+  },
+  {
+    "name": "SPINE2",
+    "test": "VerifyLLDPNeighbors",
+    "categories": [
+      "connectivity"
+    ],
+    "description": "Verifies that the provided LLDP neighbors are connected properly.",
+    "result": "success",
+    "custom_field": "Local: Ethernet2 - Remote: LEAF2 Ethernet50"
+  },
+  {
+    "name": "SPINE2",
+    "test": "VerifyLLDPNeighbors",
+    "categories": [
+      "connectivity"
+    ],
+    "description": "Verifies that the provided LLDP neighbors are connected properly.",
+    "result": "success",
+    "custom_field": "Local: Ethernet3 - Remote: LEAF3 Ethernet50"
+  },
+  {
+    "name": "SPINE2",
+    "test": "VerifyLLDPNeighbors",
+    "categories": [
+      "connectivity"
+    ],
+    "description": "Verifies that the provided LLDP neighbors are connected properly.",
+    "result": "success",
+    "custom_field": "Local: Ethernet4 - Remote: LEAF4 Ethernet50"
+  },
+  {
+    "name": "SPINE2",
+    "test": "VerifyEnvironmentCooling",
+    "categories": [
+      "hardware"
+    ],
+    "description": "Verifies the status of power supply fans and all fan trays.",
+    "result": "skipped",
+    "messages": [
+      "VerifyEnvironmentCooling test is not supported on vEOS-lab."
+    ],
+    "custom_field": "Accepted States: 'ok'"
+  },
+  {
+    "name": "SPINE2",
+    "test": "VerifyEnvironmentPower",
+    "categories": [
+      "hardware"
+    ],
+    "description": "Verifies the power supplies status.",
+    "result": "skipped",
+    "messages": [
+      "VerifyEnvironmentPower test is not supported on vEOS-lab."
+    ],
+    "custom_field": "Accepted States: 'ok'"
+  },
+  {
+    "name": "SPINE2",
+    "test": "VerifyTemperature",
+    "categories": [
+      "hardware"
+    ],
+    "description": "Verifies the device temperature.",
+    "result": "skipped",
+    "messages": [
+      "VerifyTemperature test is not supported on vEOS-lab."
+    ]
+  },
+  {
+    "name": "SPINE2",
+    "test": "VerifyTransceiversManufacturers",
+    "categories": [
+      "hardware"
+    ],
+    "description": "Verifies if all transceivers come from approved manufacturers.",
+    "result": "skipped",
+    "messages": [
+      "VerifyTransceiversManufacturers test is not supported on vEOS-lab."
+    ],
+    "custom_field": "Accepted Manufacturers: 'Arista Networks', 'Arastra, Inc.', 'Not Present'"
+  },
+  {
+    "name": "SPINE2",
+    "test": "VerifyInterfacesStatus",
+    "categories": [
+      "interfaces"
+    ],
+    "description": "Verifies the status of the provided interfaces.",
+    "result": "success",
+    "custom_field": "Interface Ethernet1 - LEAF1_Ethernet50 = 'up'"
+  },
+  {
+    "name": "SPINE2",
+    "test": "VerifyInterfacesStatus",
+    "categories": [
+      "interfaces"
+    ],
+    "description": "Verifies the status of the provided interfaces.",
+    "result": "success",
+    "custom_field": "Interface Ethernet103/1 - MLAG_PEER_SPINE1_Ethernet103/1 = 'up'"
+  },
+  {
+    "name": "SPINE2",
+    "test": "VerifyInterfacesStatus",
+    "categories": [
+      "interfaces"
+    ],
+    "description": "Verifies the status of the provided interfaces.",
+    "result": "success",
+    "custom_field": "Interface Ethernet104/1 - MLAG_PEER_SPINE1_Ethernet104/1 = 'up'"
+  },
+  {
+    "name": "SPINE2",
+    "test": "VerifyInterfacesStatus",
+    "categories": [
+      "interfaces"
+    ],
+    "description": "Verifies the status of the provided interfaces.",
+    "result": "success",
+    "custom_field": "Interface Ethernet2 - LEAF2_Ethernet50 = 'up'"
+  },
+  {
+    "name": "SPINE2",
+    "test": "VerifyInterfacesStatus",
+    "categories": [
+      "interfaces"
+    ],
+    "description": "Verifies the status of the provided interfaces.",
+    "result": "success",
+    "custom_field": "Interface Ethernet3 - LEAF3_Ethernet50 = 'up'"
+  },
+  {
+    "name": "SPINE2",
+    "test": "VerifyInterfacesStatus",
+    "categories": [
+      "interfaces"
+    ],
+    "description": "Verifies the status of the provided interfaces.",
+    "result": "success",
+    "custom_field": "Interface Ethernet4 - LEAF4_Ethernet50 = 'up'"
+  },
+  {
+    "name": "SPINE2",
+    "test": "VerifyInterfacesStatus",
+    "categories": [
+      "interfaces"
+    ],
+    "description": "Verifies the status of the provided interfaces.",
+    "result": "success",
+    "custom_field": "Interface Loopback0 - Router_ID = 'up'"
+  },
+  {
+    "name": "SPINE2",
+    "test": "VerifyInterfacesStatus",
+    "categories": [
+      "interfaces"
+    ],
+    "description": "Verifies the status of the provided interfaces.",
+    "result": "success",
+    "custom_field": "Interface Loopback88 = 'up'"
+  },
+  {
+    "name": "SPINE2",
+    "test": "VerifyInterfacesStatus",
+    "categories": [
+      "interfaces"
+    ],
+    "description": "Verifies the status of the provided interfaces.",
+    "result": "success",
+    "custom_field": "Interface Port-Channel1 - POD1_Po49 = 'up'"
+  },
+  {
+    "name": "SPINE2",
+    "test": "VerifyInterfacesStatus",
+    "categories": [
+      "interfaces"
+    ],
+    "description": "Verifies the status of the provided interfaces.",
+    "result": "success",
+    "custom_field": "Interface Port-Channel1031 - MLAG_PEER_SPINE1_Po1031 = 'up'"
+  },
+  {
+    "name": "SPINE2",
+    "test": "VerifyInterfacesStatus",
+    "categories": [
+      "interfaces"
+    ],
+    "description": "Verifies the status of the provided interfaces.",
+    "result": "success",
+    "custom_field": "Interface Port-Channel3 - POD2_Po49 = 'up'"
+  },
+  {
+    "name": "SPINE2",
+    "test": "VerifyInterfacesStatus",
+    "categories": [
+      "interfaces"
+    ],
+    "description": "Verifies the status of the provided interfaces.",
+    "result": "success",
+    "custom_field": "Interface Vlan10 - Ten = 'up'"
+  },
+  {
+    "name": "SPINE2",
+    "test": "VerifyInterfacesStatus",
+    "categories": [
+      "interfaces"
+    ],
+    "description": "Verifies the status of the provided interfaces.",
+    "result": "success",
+    "custom_field": "Interface Vlan20 - Twenty = 'up'"
+  },
+  {
+    "name": "SPINE2",
+    "test": "VerifyInterfacesStatus",
+    "categories": [
+      "interfaces"
+    ],
+    "description": "Verifies the status of the provided interfaces.",
+    "result": "success",
+    "custom_field": "Interface Vlan255 - Inband Management = 'up'"
+  },
+  {
+    "name": "SPINE2",
+    "test": "VerifyInterfacesStatus",
+    "categories": [
+      "interfaces"
+    ],
+    "description": "Verifies the status of the provided interfaces.",
+    "result": "success",
+    "custom_field": "Interface Vlan30 - Thirty = 'up'"
+  },
+  {
+    "name": "SPINE2",
+    "test": "VerifyInterfacesStatus",
+    "categories": [
+      "interfaces"
+    ],
+    "description": "Verifies the status of the provided interfaces.",
+    "result": "success",
+    "custom_field": "Interface Vlan4093 - MLAG_PEER_L3_PEERING = 'up'"
+  },
+  {
+    "name": "SPINE2",
+    "test": "VerifyInterfacesStatus",
+    "categories": [
+      "interfaces"
+    ],
+    "description": "Verifies the status of the provided interfaces.",
+    "result": "success",
+    "custom_field": "Interface Vlan4094 - MLAG_PEER = 'up'"
+  },
+  {
+    "name": "SPINE2",
+    "test": "VerifyLoopbackCount",
+    "categories": [
+      "interfaces"
+    ],
+    "description": "Verifies the number of loopback interfaces and their status.",
+    "result": "success"
+  },
+  {
+    "name": "SPINE2",
+    "test": "VerifyMlagConfigSanity",
+    "categories": [
+      "mlag"
+    ],
+    "description": "Verifies there are no MLAG config-sanity inconsistencies.",
+    "result": "success"
+  },
+  {
+    "name": "SPINE2",
+    "test": "VerifyMlagInterfaces",
+    "categories": [
+      "mlag"
+    ],
+    "description": "Verifies there are no inactive or active-partial MLAG ports.",
+    "result": "success"
+  },
+  {
+    "name": "SPINE2",
+    "test": "VerifyMlagStatus",
+    "categories": [
+      "mlag"
+    ],
+    "description": "Verifies the health status of the MLAG configuration.",
+    "result": "success"
+  },
+  {
+    "name": "SPINE2",
+    "test": "VerifyRoutingProtocolModel",
+    "categories": [
+      "routing"
+    ],
+    "description": "Verifies the configured routing protocol model.",
+    "result": "success"
+  },
+  {
+    "name": "SPINE2",
+    "test": "VerifyEOSVersion",
+    "categories": [
+      "software"
+    ],
+    "description": "Verifies the EOS version of the device.",
+    "result": "success"
+  },
+  {
+    "name": "SPINE2",
+    "test": "VerifyTerminAttrVersion",
+    "categories": [
+      "software"
+    ],
+    "description": "Verifies the TerminAttr version of the device.",
+    "result": "success"
+  },
+  {
+    "name": "SPINE2",
+    "test": "VerifyReloadCause",
+    "categories": [
+      "system"
+    ],
+    "description": "Verifies the last reload cause of the device.",
+    "result": "success"
+  }
+]

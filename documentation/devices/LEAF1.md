@@ -33,6 +33,7 @@
   - [Service Routing Protocols Model](#service-routing-protocols-model)
   - [IP Routing](#ip-routing)
   - [IPv6 Routing](#ipv6-routing)
+  - [Static Routes](#static-routes)
 - [Multicast](#multicast)
   - [IP IGMP Snooping](#ip-igmp-snooping)
 - [VRF Instances](#vrf-instances)
@@ -246,6 +247,7 @@ vlan internal order ascending range 1006 1199
 | 10 | Ten | - |
 | 20 | Twenty | - |
 | 30 | Thirty | - |
+| 255 | INBAND_MGMT | - |
 | 4094 | MLAG_PEER | MLAG |
 
 ### VLANs Device Configuration
@@ -260,6 +262,9 @@ vlan 20
 !
 vlan 30
    name Thirty
+!
+vlan 255
+   name INBAND_MGMT
 !
 vlan 4094
    name MLAG_PEER
@@ -289,8 +294,8 @@ switchport default mode routed
 
 | Interface | Description | Mode | VLANs | Native VLAN | Trunk Group | Channel-Group |
 | --------- | ----------- | ---- | ----- | ----------- | ----------- | ------------- |
-| Ethernet49 | SPINE1_Ethernet1 | *trunk | *10,20,30 | *- | *- | 49 |
-| Ethernet50 | SPINE2_Ethernet1 | *trunk | *10,20,30 | *- | *- | 49 |
+| Ethernet49 | SPINE1_Ethernet1 | *trunk | *10,20,30,255 | *- | *- | 49 |
+| Ethernet50 | SPINE2_Ethernet1 | *trunk | *10,20,30,255 | *- | *- | 49 |
 | Ethernet51 | MLAG_PEER_LEAF2_Ethernet51 | *trunk | *- | *- | *['MLAG'] | 51 |
 | Ethernet52 | MLAG_PEER_LEAF2_Ethernet52 | *trunk | *- | *- | *['MLAG'] | 51 |
 
@@ -329,7 +334,7 @@ interface Ethernet52
 
 | Interface | Description | Type | Mode | VLANs | Native VLAN | Trunk Group | LACP Fallback Timeout | LACP Fallback Mode | MLAG ID | EVPN ESI |
 | --------- | ----------- | ---- | ---- | ----- | ----------- | ------------| --------------------- | ------------------ | ------- | -------- |
-| Port-Channel49 | SPINES_Po1 | switched | trunk | 10,20,30 | - | - | - | - | 49 | - |
+| Port-Channel49 | SPINES_Po1 | switched | trunk | 10,20,30,255 | - | - | - | - | 49 | - |
 | Port-Channel51 | MLAG_PEER_LEAF2_Po51 | switched | trunk | - | - | ['MLAG'] | - | - | - | - |
 
 #### Port-Channel Interfaces Device Configuration
@@ -340,7 +345,7 @@ interface Port-Channel49
    description SPINES_Po1
    no shutdown
    switchport
-   switchport trunk allowed vlan 10,20,30
+   switchport trunk allowed vlan 10,20,30,255
    switchport mode trunk
    mlag 49
 !
@@ -358,17 +363,25 @@ interface Port-Channel51
 
 | Interface | Description | VRF |  MTU | Shutdown |
 | --------- | ----------- | --- | ---- | -------- |
+| Vlan255 | Inband Management | default | 1500 | False |
 | Vlan4094 | MLAG_PEER | default | 1500 | False |
 
 ##### IPv4
 
 | Interface | VRF | IP Address | IP Address Virtual | IP Router Virtual Address | VRRP | ACL In | ACL Out |
 | --------- | --- | ---------- | ------------------ | ------------------------- | ---- | ------ | ------- |
+| Vlan255 |  default  |  10.255.255.4/24  |  -  |  -  |  -  |  -  |  -  |
 | Vlan4094 |  default  |  10.1.253.0/31  |  -  |  -  |  -  |  -  |  -  |
 
 #### VLAN Interfaces Device Configuration
 
 ```eos
+!
+interface Vlan255
+   description Inband Management
+   no shutdown
+   mtu 1500
+   ip address 10.255.255.4/24
 !
 interface Vlan4094
    description MLAG_PEER
@@ -410,6 +423,21 @@ service routing protocols model multi-agent
 | --- | --------------- |
 | default | False |
 | default | false |
+
+### Static Routes
+
+#### Static Routes Summary
+
+| VRF | Destination Prefix | Next Hop IP | Exit interface | Administrative Distance | Tag | Route Name | Metric |
+| --- | ------------------ | ----------- | -------------- | ----------------------- | --- | ---------- | ------ |
+| default | 0.0.0.0/0 | 10.255.255.1 | - | 1 | - | - | - |
+
+#### Static Routes Device Configuration
+
+```eos
+!
+ip route 0.0.0.0/0 10.255.255.1
+```
 
 ## Multicast
 

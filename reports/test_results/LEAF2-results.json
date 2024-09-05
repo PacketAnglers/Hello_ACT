@@ -1,0 +1,264 @@
+[
+  {
+    "name": "LEAF2",
+    "test": "VerifyRunningConfigDiffs",
+    "categories": [
+      "configuration"
+    ],
+    "description": "Verifies there is no difference between the running-config and the startup-config",
+    "result": "success"
+  },
+  {
+    "name": "LEAF2",
+    "test": "VerifyZeroTouch",
+    "categories": [
+      "configuration"
+    ],
+    "description": "Verifies ZeroTouch is disabled",
+    "result": "success"
+  },
+  {
+    "name": "LEAF2",
+    "test": "VerifyLLDPNeighbors",
+    "categories": [
+      "connectivity"
+    ],
+    "description": "Verifies that the provided LLDP neighbors are connected properly.",
+    "result": "success",
+    "custom_field": "Local: Ethernet49 - Remote: SPINE1 Ethernet2"
+  },
+  {
+    "name": "LEAF2",
+    "test": "VerifyLLDPNeighbors",
+    "categories": [
+      "connectivity"
+    ],
+    "description": "Verifies that the provided LLDP neighbors are connected properly.",
+    "result": "success",
+    "custom_field": "Local: Ethernet50 - Remote: SPINE2 Ethernet2"
+  },
+  {
+    "name": "LEAF2",
+    "test": "VerifyLLDPNeighbors",
+    "categories": [
+      "connectivity"
+    ],
+    "description": "Verifies that the provided LLDP neighbors are connected properly.",
+    "result": "success",
+    "custom_field": "Local: Ethernet51 - Remote: LEAF1 Ethernet51"
+  },
+  {
+    "name": "LEAF2",
+    "test": "VerifyLLDPNeighbors",
+    "categories": [
+      "connectivity"
+    ],
+    "description": "Verifies that the provided LLDP neighbors are connected properly.",
+    "result": "success",
+    "custom_field": "Local: Ethernet52 - Remote: LEAF1 Ethernet52"
+  },
+  {
+    "name": "LEAF2",
+    "test": "VerifyReachability",
+    "categories": [
+      "connectivity"
+    ],
+    "description": "Test the network reachability to one or many destination IP(s).",
+    "result": "success",
+    "custom_field": "TEST PING TO INTERNET 8.8.8.8"
+  },
+  {
+    "name": "LEAF2",
+    "test": "VerifyEnvironmentCooling",
+    "categories": [
+      "hardware"
+    ],
+    "description": "Verifies the status of power supply fans and all fan trays.",
+    "result": "skipped",
+    "messages": [
+      "VerifyEnvironmentCooling test is not supported on vEOS-lab."
+    ],
+    "custom_field": "Accepted States: 'ok'"
+  },
+  {
+    "name": "LEAF2",
+    "test": "VerifyEnvironmentPower",
+    "categories": [
+      "hardware"
+    ],
+    "description": "Verifies the power supplies status.",
+    "result": "skipped",
+    "messages": [
+      "VerifyEnvironmentPower test is not supported on vEOS-lab."
+    ],
+    "custom_field": "Accepted States: 'ok'"
+  },
+  {
+    "name": "LEAF2",
+    "test": "VerifyTemperature",
+    "categories": [
+      "hardware"
+    ],
+    "description": "Verifies the device temperature.",
+    "result": "skipped",
+    "messages": [
+      "VerifyTemperature test is not supported on vEOS-lab."
+    ]
+  },
+  {
+    "name": "LEAF2",
+    "test": "VerifyTransceiversManufacturers",
+    "categories": [
+      "hardware"
+    ],
+    "description": "Verifies if all transceivers come from approved manufacturers.",
+    "result": "skipped",
+    "messages": [
+      "VerifyTransceiversManufacturers test is not supported on vEOS-lab."
+    ],
+    "custom_field": "Accepted Manufacturers: 'Arista Networks', 'Arastra, Inc.', 'Not Present'"
+  },
+  {
+    "name": "LEAF2",
+    "test": "VerifyInterfacesStatus",
+    "categories": [
+      "interfaces"
+    ],
+    "description": "Verifies the status of the provided interfaces.",
+    "result": "success",
+    "custom_field": "Interface Ethernet49 - SPINE1_Ethernet2 = 'up'"
+  },
+  {
+    "name": "LEAF2",
+    "test": "VerifyInterfacesStatus",
+    "categories": [
+      "interfaces"
+    ],
+    "description": "Verifies the status of the provided interfaces.",
+    "result": "success",
+    "custom_field": "Interface Ethernet50 - SPINE2_Ethernet2 = 'up'"
+  },
+  {
+    "name": "LEAF2",
+    "test": "VerifyInterfacesStatus",
+    "categories": [
+      "interfaces"
+    ],
+    "description": "Verifies the status of the provided interfaces.",
+    "result": "success",
+    "custom_field": "Interface Ethernet51 - MLAG_PEER_LEAF1_Ethernet51 = 'up'"
+  },
+  {
+    "name": "LEAF2",
+    "test": "VerifyInterfacesStatus",
+    "categories": [
+      "interfaces"
+    ],
+    "description": "Verifies the status of the provided interfaces.",
+    "result": "success",
+    "custom_field": "Interface Ethernet52 - MLAG_PEER_LEAF1_Ethernet52 = 'up'"
+  },
+  {
+    "name": "LEAF2",
+    "test": "VerifyInterfacesStatus",
+    "categories": [
+      "interfaces"
+    ],
+    "description": "Verifies the status of the provided interfaces.",
+    "result": "success",
+    "custom_field": "Interface Port-Channel49 - SPINES_Po1 = 'up'"
+  },
+  {
+    "name": "LEAF2",
+    "test": "VerifyInterfacesStatus",
+    "categories": [
+      "interfaces"
+    ],
+    "description": "Verifies the status of the provided interfaces.",
+    "result": "success",
+    "custom_field": "Interface Port-Channel51 - MLAG_PEER_LEAF1_Po51 = 'up'"
+  },
+  {
+    "name": "LEAF2",
+    "test": "VerifyInterfacesStatus",
+    "categories": [
+      "interfaces"
+    ],
+    "description": "Verifies the status of the provided interfaces.",
+    "result": "success",
+    "custom_field": "Interface Vlan255 - Inband Management = 'up'"
+  },
+  {
+    "name": "LEAF2",
+    "test": "VerifyInterfacesStatus",
+    "categories": [
+      "interfaces"
+    ],
+    "description": "Verifies the status of the provided interfaces.",
+    "result": "success",
+    "custom_field": "Interface Vlan4094 - MLAG_PEER = 'up'"
+  },
+  {
+    "name": "LEAF2",
+    "test": "VerifyMlagConfigSanity",
+    "categories": [
+      "mlag"
+    ],
+    "description": "Verifies there are no MLAG config-sanity inconsistencies.",
+    "result": "success"
+  },
+  {
+    "name": "LEAF2",
+    "test": "VerifyMlagInterfaces",
+    "categories": [
+      "mlag"
+    ],
+    "description": "Verifies there are no inactive or active-partial MLAG ports.",
+    "result": "success"
+  },
+  {
+    "name": "LEAF2",
+    "test": "VerifyMlagStatus",
+    "categories": [
+      "mlag"
+    ],
+    "description": "Verifies the health status of the MLAG configuration.",
+    "result": "success"
+  },
+  {
+    "name": "LEAF2",
+    "test": "VerifyRoutingProtocolModel",
+    "categories": [
+      "routing"
+    ],
+    "description": "Verifies the configured routing protocol model.",
+    "result": "success"
+  },
+  {
+    "name": "LEAF2",
+    "test": "VerifyEOSVersion",
+    "categories": [
+      "software"
+    ],
+    "description": "Verifies the EOS version of the device.",
+    "result": "success"
+  },
+  {
+    "name": "LEAF2",
+    "test": "VerifyTerminAttrVersion",
+    "categories": [
+      "software"
+    ],
+    "description": "Verifies the TerminAttr version of the device.",
+    "result": "success"
+  },
+  {
+    "name": "LEAF2",
+    "test": "VerifyReloadCause",
+    "categories": [
+      "system"
+    ],
+    "description": "Verifies the last reload cause of the device.",
+    "result": "success"
+  }
+]

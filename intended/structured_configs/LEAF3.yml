@@ -50,6 +50,9 @@ vlans:
 - id: 30
   name: Thirty
   tenant: MY_FABRIC
+- id: 255
+  tenant: system
+  name: INBAND_MGMT
 vlan_interfaces:
 - name: Vlan4094
   description: MLAG_PEER
@@ -57,6 +60,12 @@ vlan_interfaces:
   no_autostate: true
   mtu: 1500
   ip_address: 10.1.253.0/31
+- name: Vlan255
+  description: Inband Management
+  shutdown: false
+  mtu: 1500
+  ip_address: 10.255.255.6/24
+  type: inband_mgmt
 port_channel_interfaces:
 - name: Port-Channel51
   description: MLAG_PEER_LEAF4_Po51
@@ -70,7 +79,7 @@ port_channel_interfaces:
   type: switched
   shutdown: false
   mode: trunk
-  vlans: 10,20,30
+  vlans: 10,20,30,255
   mlag: 49
 ethernet_interfaces:
 - name: Ethernet51
@@ -122,5 +131,8 @@ mlag_configuration:
   reload_delay_non_mlag: '330'
 ip_igmp_snooping:
   globally_enabled: true
+static_routes:
+- destination_address_prefix: 0.0.0.0/0
+  gateway: 10.255.255.1
 metadata:
   platform: vEOS
