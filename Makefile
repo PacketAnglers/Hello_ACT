@@ -6,9 +6,9 @@ help: ## Display help message
 build: ## Build Configs with AVD
 	ansible-playbook playbooks/build.yml
 
-.PHONY: deploy-eapi
-deploy-eapi: ## Deploy configs via eAPI
-	ansible-playbook playbooks/deploy-eapi.yml
+.PHONY: deploy
+deploy: ## Deploy configs via eAPI
+	ansible-playbook playbooks/deploy-eapi.yml -i remote-inventory.yml
 
 .PHONY: deploy-cvp
 deploy-cvp: ## Deploy configs via CVP
