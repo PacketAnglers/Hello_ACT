@@ -245,8 +245,6 @@ vlan internal order ascending range 1006 1199
 | ------- | ---- | ------------ |
 | 10 | Ten | - |
 | 20 | Twenty | - |
-| 30 | Thirty | - |
-| 40 | Forty | - |
 | 4094 | MLAG_PEER | MLAG |
 
 ### VLANs Device Configuration
@@ -258,12 +256,6 @@ vlan 10
 !
 vlan 20
    name Twenty
-!
-vlan 30
-   name Thirty
-!
-vlan 40
-   name Forty
 !
 vlan 4094
    name MLAG_PEER
@@ -293,8 +285,8 @@ switchport default mode routed
 
 | Interface | Description | Mode | VLANs | Native VLAN | Trunk Group | Channel-Group |
 | --------- | ----------- | ---- | ----- | ----------- | ----------- | ------------- |
-| Ethernet49 | SPINE1_Ethernet3 | *trunk | *10,20,30,40 | *- | *- | 49 |
-| Ethernet50 | SPINE2_Ethernet3 | *trunk | *10,20,30,40 | *- | *- | 49 |
+| Ethernet49 | SPINE1_Ethernet3 | *trunk | *10,20 | *- | *- | 49 |
+| Ethernet50 | SPINE2_Ethernet3 | *trunk | *10,20 | *- | *- | 49 |
 | Ethernet51 | MLAG_PEER_LEAF4_Ethernet51 | *trunk | *- | *- | *['MLAG'] | 51 |
 | Ethernet52 | MLAG_PEER_LEAF4_Ethernet52 | *trunk | *- | *- | *['MLAG'] | 51 |
 
@@ -333,7 +325,7 @@ interface Ethernet52
 
 | Interface | Description | Type | Mode | VLANs | Native VLAN | Trunk Group | LACP Fallback Timeout | LACP Fallback Mode | MLAG ID | EVPN ESI |
 | --------- | ----------- | ---- | ---- | ----- | ----------- | ------------| --------------------- | ------------------ | ------- | -------- |
-| Port-Channel49 | SPINES_Po3 | switched | trunk | 10,20,30,40 | - | - | - | - | 49 | - |
+| Port-Channel49 | SPINES_Po3 | switched | trunk | 10,20 | - | - | - | - | 49 | - |
 | Port-Channel51 | MLAG_PEER_LEAF4_Po51 | switched | trunk | - | - | ['MLAG'] | - | - | - | - |
 
 #### Port-Channel Interfaces Device Configuration
@@ -344,7 +336,7 @@ interface Port-Channel49
    description SPINES_Po3
    no shutdown
    switchport
-   switchport trunk allowed vlan 10,20,30,40
+   switchport trunk allowed vlan 10,20
    switchport mode trunk
    mlag 49
 !

@@ -248,8 +248,6 @@ vlan internal order ascending range 1006 1199
 | ------- | ---- | ------------ |
 | 10 | Ten | - |
 | 20 | Twenty | - |
-| 30 | Thirty | - |
-| 40 | Forty | - |
 | 4093 | LEAF_PEER_L3 | LEAF_PEER_L3 |
 | 4094 | MLAG_PEER | MLAG |
 
@@ -262,12 +260,6 @@ vlan 10
 !
 vlan 20
    name Twenty
-!
-vlan 30
-   name Thirty
-!
-vlan 40
-   name Forty
 !
 vlan 4093
    name LEAF_PEER_L3
@@ -301,10 +293,10 @@ switchport default mode routed
 
 | Interface | Description | Mode | VLANs | Native VLAN | Trunk Group | Channel-Group |
 | --------- | ----------- | ---- | ----- | ----------- | ----------- | ------------- |
-| Ethernet1 | LEAF1_Ethernet49 | *trunk | *10,20,30,40 | *- | *- | 1 |
-| Ethernet2 | LEAF2_Ethernet49 | *trunk | *10,20,30,40 | *- | *- | 1 |
-| Ethernet3 | LEAF3_Ethernet49 | *trunk | *10,20,30,40 | *- | *- | 3 |
-| Ethernet4 | LEAF4_Ethernet49 | *trunk | *10,20,30,40 | *- | *- | 3 |
+| Ethernet1 | LEAF1_Ethernet49 | *trunk | *10,20 | *- | *- | 1 |
+| Ethernet2 | LEAF2_Ethernet49 | *trunk | *10,20 | *- | *- | 1 |
+| Ethernet3 | LEAF3_Ethernet49 | *trunk | *10,20 | *- | *- | 3 |
+| Ethernet4 | LEAF4_Ethernet49 | *trunk | *10,20 | *- | *- | 3 |
 | Ethernet103/1 | MLAG_PEER_SPINE2_Ethernet103/1 | *trunk | *- | *- | *['LEAF_PEER_L3', 'MLAG'] | 1031 |
 | Ethernet104/1 | MLAG_PEER_SPINE2_Ethernet104/1 | *trunk | *- | *- | *['LEAF_PEER_L3', 'MLAG'] | 1031 |
 
@@ -353,8 +345,8 @@ interface Ethernet104/1
 
 | Interface | Description | Type | Mode | VLANs | Native VLAN | Trunk Group | LACP Fallback Timeout | LACP Fallback Mode | MLAG ID | EVPN ESI |
 | --------- | ----------- | ---- | ---- | ----- | ----------- | ------------| --------------------- | ------------------ | ------- | -------- |
-| Port-Channel1 | POD1_Po49 | switched | trunk | 10,20,30,40 | - | - | - | - | 1 | - |
-| Port-Channel3 | POD2_Po49 | switched | trunk | 10,20,30,40 | - | - | - | - | 3 | - |
+| Port-Channel1 | POD1_Po49 | switched | trunk | 10,20 | - | - | - | - | 1 | - |
+| Port-Channel3 | POD2_Po49 | switched | trunk | 10,20 | - | - | - | - | 3 | - |
 | Port-Channel1031 | MLAG_PEER_SPINE2_Po1031 | switched | trunk | - | - | ['LEAF_PEER_L3', 'MLAG'] | - | - | - | - |
 
 #### Port-Channel Interfaces Device Configuration
@@ -365,7 +357,7 @@ interface Port-Channel1
    description POD1_Po49
    no shutdown
    switchport
-   switchport trunk allowed vlan 10,20,30,40
+   switchport trunk allowed vlan 10,20
    switchport mode trunk
    mlag 1
 !
@@ -373,7 +365,7 @@ interface Port-Channel3
    description POD2_Po49
    no shutdown
    switchport
-   switchport trunk allowed vlan 10,20,30,40
+   switchport trunk allowed vlan 10,20
    switchport mode trunk
    mlag 3
 !
@@ -421,8 +413,6 @@ interface Loopback0
 | --------- | ----------- | --- | ---- | -------- |
 | Vlan10 | Ten | default | - | False |
 | Vlan20 | Twenty | default | - | False |
-| Vlan30 | Thirty | default | - | False |
-| Vlan40 | Forty | default | - | False |
 | Vlan4093 | MLAG_PEER_L3_PEERING | default | 1500 | False |
 | Vlan4094 | MLAG_PEER | default | 1500 | False |
 
@@ -432,8 +422,6 @@ interface Loopback0
 | --------- | --- | ---------- | ------------------ | ------------------------- | ---- | ------ | ------- |
 | Vlan10 |  default  |  10.10.10.2/24  |  -  |  10.10.10.1  |  -  |  -  |  -  |
 | Vlan20 |  default  |  10.20.20.2/24  |  -  |  10.20.20.1  |  -  |  -  |  -  |
-| Vlan30 |  default  |  10.30.30.2/24  |  -  |  10.30.30.1  |  -  |  -  |  -  |
-| Vlan40 |  default  |  10.40.40.2/24  |  -  |  10.40.40.1  |  -  |  -  |  -  |
 | Vlan4093 |  default  |  10.1.254.0/31  |  -  |  -  |  -  |  -  |  -  |
 | Vlan4094 |  default  |  10.1.253.0/31  |  -  |  -  |  -  |  -  |  -  |
 
@@ -445,29 +433,13 @@ interface Vlan10
    description Ten
    no shutdown
    ip address 10.10.10.2/24
-   ip ospf area 0.0.0.0
    ip virtual-router address 10.10.10.1
 !
 interface Vlan20
    description Twenty
    no shutdown
    ip address 10.20.20.2/24
-   ip ospf area 0.0.0.0
    ip virtual-router address 10.20.20.1
-!
-interface Vlan30
-   description Thirty
-   no shutdown
-   ip address 10.30.30.2/24
-   ip ospf area 0.0.0.0
-   ip virtual-router address 10.30.30.1
-!
-interface Vlan40
-   description Forty
-   no shutdown
-   ip address 10.40.40.2/24
-   ip ospf area 0.0.0.0
-   ip virtual-router address 10.40.40.1
 !
 interface Vlan4093
    description MLAG_PEER_L3_PEERING
@@ -541,14 +513,17 @@ ip routing
 | ---------- | --------- | ------------------------- | -------------------- | --- | ------- | ----------------------------- | ---------------------------- | ----------------------------- | ------------- | --------------------- | ------------------ |
 | 1 | 10.1.252.1 | enabled | Vlan4093 <br> | disabled | 12000 | disabled | disabled | - | - | - | - |
 
+#### Router OSPF Router Redistribution
+
+| Process ID | Source Protocol | Include Leaked | Route Map |
+| ---------- | --------------- | -------------- | --------- |
+| 1 | connected | disabled | - |
+| 1 | bgp | disabled | - |
+
 #### OSPF Interfaces
 
 | Interface | Area | Cost | Point To Point |
 | -------- | -------- | -------- | -------- |
-| Vlan10 | 0.0.0.0 | - | - |
-| Vlan20 | 0.0.0.0 | - | - |
-| Vlan30 | 0.0.0.0 | - | - |
-| Vlan40 | 0.0.0.0 | - | - |
 | Vlan4093 | 0.0.0.0 | - | True |
 | Loopback0 | 0.0.0.0 | - | - |
 
@@ -561,6 +536,8 @@ router ospf 1 vrf default
    passive-interface default
    no passive-interface Vlan4093
    max-lsa 12000
+   redistribute connected
+   redistribute bgp
 ```
 
 ## Multicast

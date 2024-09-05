@@ -11,7 +11,7 @@
           name: arista.avd.eos_config_deploy_cvp
       vars:
         container_root: "DC_FABRIC"
-        configlets_prefix: "AHM"
+        configlets_prefix: "AVD"
         state: present
         execute_tasks: false
         device_filter: ''

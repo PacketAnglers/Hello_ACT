@@ -53,12 +53,6 @@ vlans:
 - id: 20
   name: Twenty
   tenant: MY_FABRIC
-- id: 30
-  name: Thirty
-  tenant: MY_FABRIC
-- id: 40
-  name: Forty
-  tenant: MY_FABRIC
 vlan_interfaces:
 - name: Vlan4093
   description: MLAG_PEER_L3_PEERING
@@ -80,7 +74,6 @@ vlan_interfaces:
   ip_address: 10.10.10.3/24
   ip_virtual_router_addresses:
   - 10.10.10.1
-  ospf_area: 0.0.0.0
 - name: Vlan20
   tenant: MY_FABRIC
   description: Twenty
@@ -88,23 +81,6 @@ vlan_interfaces:
   ip_address: 10.20.20.3/24
   ip_virtual_router_addresses:
   - 10.20.20.1
-  ospf_area: 0.0.0.0
-- name: Vlan30
-  tenant: MY_FABRIC
-  description: Thirty
-  shutdown: false
-  ip_address: 10.30.30.3/24
-  ip_virtual_router_addresses:
-  - 10.30.30.1
-  ospf_area: 0.0.0.0
-- name: Vlan40
-  tenant: MY_FABRIC
-  description: Forty
-  shutdown: false
-  ip_address: 10.40.40.3/24
-  ip_virtual_router_addresses:
-  - 10.40.40.1
-  ospf_area: 0.0.0.0
 port_channel_interfaces:
 - name: Port-Channel1031
   description: MLAG_PEER_SPINE1_Po1031
@@ -119,14 +95,14 @@ port_channel_interfaces:
   type: switched
   shutdown: false
   mode: trunk
-  vlans: 10,20,30,40
+  vlans: 10,20
   mlag: 1
 - name: Port-Channel3
   description: POD2_Po49
   type: switched
   shutdown: false
   mode: trunk
-  vlans: 10,20,30,40
+  vlans: 10,20
   mlag: 3
 ethernet_interfaces:
 - name: Ethernet103/1
@@ -211,7 +187,9 @@ router_ospf:
     no_passive_interfaces:
     - Vlan4093
     bfd_enable: false
-    redistribute: null
+    redistribute:
+      connected: {}
+      bgp: {}
     vrf: default
 ip_igmp_snooping:
   globally_enabled: true

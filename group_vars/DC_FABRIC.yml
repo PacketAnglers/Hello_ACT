@@ -22,7 +22,6 @@ l3spine:
         - name: SPINE1
           id: 1
           mgmt_ip: 192.168.0.11/24
-
         - name: SPINE2
           id: 2
           mgmt_ip: 192.168.0.12/24
