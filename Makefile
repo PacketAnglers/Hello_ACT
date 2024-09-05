@@ -9,6 +9,7 @@ build: ## Build Configs with AVD
 .PHONY: deploy
 deploy: ## Deploy configs via eAPI
 	ansible-playbook playbooks/deploy-eapi.yml -i remote-inventory.yml
+	ansible-playbook playbooks/validate-state.yml -i remote-inventory.yml
 
 .PHONY: validate
 validate: ## Validate Current State with ANTA
