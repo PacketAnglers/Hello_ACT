@@ -5,6 +5,31 @@ port_profiles:
   - profile: PP-TRUNK
     mode: "trunk"
 
+  # Typical 802.1x port profile
+  - profile: PP-DOT1X
+    mode: "trunk phone"
+    phone_vlan: "700"
+    phone_trunk_mode: "untagged"
+    spanning_tree_portfast: edge
+    dot1x:
+      port_control: auto
+      reauthentication: true
+      pae:
+        mode: authenticator
+      host_mode:
+        mode: multi-host
+        multi_host_authenticated: true
+      mac_based_authentication:
+        enabled: true
+      timeout:
+        reauth_period: server
+        tx_period: 3
+      reauthorization_request_limit: 3
+      authentication_failure:
+        action: allow
+        allow_vlan: 800
+
+
 switches:
 
 
@@ -12,3 +37,13 @@ connected_endpoints_keys:
 - description: Switch.
   key: switches
   type: switch
+
+
+# Deploy ports on all Leafs ports 1-48
+# network_ports:
+#   - switches:
+#       - LEAF[1234]
+#     switch_ports:
+#       - Ethernet1-48
+#     profile: PP-DOT1X
+#     native_vlan: 500
